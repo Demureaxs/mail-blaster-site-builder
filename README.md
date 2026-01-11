@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Teklytic Preview Demo Scaffold
 
-## Getting Started
+This is a Next.js App Router application built to preview industry-specific websites dynamically using Vercel KV for data storage.
 
-First, run the development server:
+## Setup
 
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+2. **Environment Variables**
+   Create a `.env.local` file with the following:
+   ```bash
+   # Security
+   ADMIN_TOKEN=secret123
+
+   # Vercel KV (Get these from Vercel Dashboard storage tab)
+   KV_URL="redis://..."
+   KV_REST_API_URL="https://..."
+   KV_REST_API_TOKEN="..."
+   KV_REST_API_READ_ONLY_TOKEN="..."
+
+   # Optional Integrations
+   NEXT_PUBLIC_GA4_ID=G-XXXXXXXXXX
+   STRIPE_PAYMENT_LINK=https://buy.stripe.com/test_...
+   ```
+
+3. **Run Locally**
+   ```bash
+   npm run dev
+   ```
+   Visit `http://localhost:3000/plumbing/demo-plumbing-co` (will 404 until you seed data).
+
+## Seeding Data (Test Commands)
+
+Use `curl` to populate the KV store with demo data. Replace `secret123` with your `ADMIN_TOKEN`.
+
+### 1. Insert/Upsert a Lead
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+curl -X POST http://localhost:3000/api/lead/upsert \
+  -H "Content-Type: application/json" \
+  -H "X-ADMIN-TOKEN: secret123" \
+  -d '{
+    "industry": "plumbing",
+    "slug": "bobs-plumbing-tampa-fl",
+    "data": {
+      "businessName": "Bob'\''s Plumbing Tampa",
+      "city": "Tampa, FL",
+      "email": "bob@example.com",
+      "phone": "555-0199"
+    }
+  }'
 ```
+> **View it:** [http://localhost:3000/plumbing/bobs-plumbing-tampa-fl](http://localhost:3000/plumbing/bobs-plumbing-tampa-fl)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Override Services (Optional)
+This scaffold uses default template services if none are found in KV. To override:
+(This requires implementing a specific service upsert API or manually writing to KV `services:plumbing:bobs-plumbing-tampa-fl`).
+*Currently, the API only supports Lead Config upsert directly. You can use Vercel CLI `vercel kv set` for detailed content management or add more API routes.*
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Adding a New Industry Template
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Create the Folder Structure**
+   Copy `src/templates/default` to `src/templates/your-industry`.
 
-## Learn More
+2. **Update Data**
+   Edit `src/templates/your-industry/data.ts` with industry-specific default services and blog posts.
 
-To learn more about Next.js, take a look at the following resources:
+3. **Register the Template**
+   Edit `src/templates/registry.ts`:
+   ```typescript
+   import { YourIndustryTemplate } from "./your-industry";
+   
+   const templates = {
+     // ...
+     "your-industry": YourIndustryTemplate,
+   };
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Done!**
+   Routes like `/your-industry/some-company` will now automatically use the new template.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy to Vercel. Ensure the KV store is linked to the project.
+The application will automatically build with `npm run build`.
