@@ -2,6 +2,7 @@ import Link from "next/link";
 import { LeadConfig } from "@/lib/types";
 import { Button } from "../ui/Button"; // standard relative import
 import { logServerEvent } from "@/lib/analytics";
+import { LaunchButton } from "./LaunchButton";
 
 interface BaseShellProps {
   children: React.ReactNode;
@@ -47,14 +48,12 @@ export function BaseShell({ children, lead, industry, slug, ctaLink }: BaseShell
 
           <div className="flex items-center gap-2">
             {ctaLink && (
-                 <Link href={ctaLink} target="_blank" rel="noopener noreferrer">
-                    <Button 
-                       size="sm" 
-                       className="hidden sm:inline-flex"
-                    >
-                      Launch This Site
-                    </Button>
-                 </Link>
+                 <LaunchButton 
+                    stripeLink={ctaLink} 
+                    industry={industry} 
+                    slug={slug}
+                    className="hidden sm:inline-flex"
+                 />
             )}
             
             {!ctaLink && (
