@@ -35,9 +35,12 @@ export default async function Page({ params }: PageProps) {
     path: `/${industry}/${slug}`,
   });
 
-  // const Template = getTemplate(industry);
-  // const { DemoHome } = Template.Components;
+  const Template = getTemplate(industry);
+  const { DemoHome } = Template.Components;
 
-  // eslint-disable-next-line react/no-children-prop
-  return <BaseShell lead={lead} industry={industry} slug={slug} ctaLink={process.env.STRIPE_PAYMENT_LINK} children={undefined}></BaseShell>;
+  return (
+    <BaseShell lead={lead} industry={industry} slug={slug} ctaLink={process.env.STRIPE_PAYMENT_LINK}>
+      <DemoHome lead={lead} industry={industry} slug={slug} stripePaymentLink={process.env.STRIPE_PAYMENT_LINK} />
+    </BaseShell>
+  );
 }
