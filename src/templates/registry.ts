@@ -7,6 +7,7 @@ const templates: Record<string, TemplateModule> = {
   default: DefaultTemplate,
   plumbing: PlumbingTemplate,
   hvac: HvacTemplate,
+  locksmiths: DefaultTemplate,
 };
 
 export function getTemplate(industry: string): TemplateModule {
