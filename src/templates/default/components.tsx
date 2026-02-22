@@ -3,7 +3,7 @@ import { TemplateProps } from '../types';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import Image from 'next/image';
-import { Phone, Siren, Award, Clock, ShieldCheck, Key, CheckCircle2, Star, Wrench } from 'lucide-react';
+import { Phone, Siren, Award, Clock, ShieldCheck, Key, CheckCircle2, Star, Wrench, Home, Car, Shield } from 'lucide-react';
 
 export function DemoHome({ lead, industry, slug }: TemplateProps) {
   return (
@@ -49,10 +49,10 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
 
               <div className='mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4'>
                 <Link href={`tel:${lead?.phone || '07000 000000'}`}>
-                  <button className='group inline-flex items-center justify-between gap-6 bg-white border border-transparent hover:border-gray-200 rounded-full pl-6 pr-2 py-2 text-base font-bold text-gray-900 transition-all duration-300 hover:shadow-xl shadow-white/10'>
+                  <button className='group inline-flex items-center justify-between gap-6 bg-(--brand-orange) hover:bg-white border border-transparent rounded-full pl-6 pr-2 py-2 text-base font-bold text-white hover:text-black transition-all duration-300 hover:shadow-xl shadow-(--brand-orange)/20'>
                     CALL US NOW: {lead?.phone || '07000 000000'}
-                    <span className='w-10 h-10 rounded-full bg-(--brand-orange) group-hover:bg-black flex items-center justify-center transition-colors duration-300'>
-                      <Phone className='h-4 w-4 text-white group-hover:rotate-12 transition-transform duration-300' />
+                    <span className='w-10 h-10 rounded-full bg-white group-hover:bg-black flex items-center justify-center transition-colors duration-300'>
+                      <Phone className='h-4 w-4 text-(--brand-orange) group-hover:text-white group-hover:rotate-12 transition-transform duration-300' />
                     </span>
                   </button>
                 </Link>
@@ -251,10 +251,34 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
               icon: Wrench,
             },
             {
+              tag: 'Specialist',
+              title: 'UPVC Door & Window Locks',
+              desc: 'Repair and replacement of faulty multipoint UPVC locking mechanisms.',
+              icon: Home,
+            },
+            {
               tag: 'Business',
               title: 'Commercial Access Control',
               desc: 'Master key systems, digital locks, and high-security installations.',
               icon: Award,
+            },
+            {
+              tag: 'In-Store/Mobile',
+              title: 'Mobile Key Cutting',
+              desc: 'Precision key duplication on-site for mortice and cylinder keys.',
+              icon: Key,
+            },
+            {
+              tag: 'Vehicle',
+              title: 'Auto Locksmith Services',
+              desc: 'Vehicle entry, transponder key programming, and broken key extraction.',
+              icon: Car,
+            },
+            {
+              tag: 'Emergency',
+              title: 'Burglary Repairs & Boarding',
+              desc: 'Immediate post-break-in securing, boarding up, and lock replacement.',
+              icon: Shield,
             },
           ].map((srv, idx) => (
             <div
@@ -403,25 +427,44 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
 
 export function ServicesIndex({ lead, services, industry, slug }: TemplateProps) {
   return (
-    <Container className='py-12 mt-16 md:mt-24'>
-      <h1 className='text-4xl font-bold mb-8 text-gray-900 tracking-tight'>Our Services</h1>
-      <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
-        {services?.map((s) => (
-          <div
-            key={s.serviceSlug}
-            className='bg-white border border-gray-200 p-8 rounded-2xl hover:border-(--brand-orange) hover:shadow-xl transition-all group group-hover:-translate-y-1'
-          >
-            <h2 className='text-xl font-bold mb-3 text-gray-900'>{s.title}</h2>
-            <p className='text-gray-500 mb-6 leading-relaxed'>{s.summary}</p>
-            <Link href={`/${industry}/${slug}/services/${s.serviceSlug}`}>
-              <Button variant='ghost' className='pl-0 hover:pl-2 hover:bg-transparent hover:text-(--brand-orange) transition-all font-semibold'>
-                Learn More &rarr;
-              </Button>
-            </Link>
-          </div>
-        ))}
+    <div className='bg-gray-50 flex-1 w-full'>
+      {/* Short Hero */}
+      <div className='relative rounded-2xl overflow-hidden mx-4 mt-4 h-[40vh] min-h-[350px] max-h-[450px] mb-16'>
+        <Image
+          src='https://www.lockout247.co.uk/wp-content/uploads/2025/03/Reliable-Locksmith-Essex-scaled.jpeg'
+          alt='Our Services'
+          fill
+          priority
+          className='object-cover'
+        />
+        <div className='absolute inset-0 bg-black/75 z-10' />
+        <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-end pb-12 px-4 md:px-6'>
+          <h1 className='text-white text-4xl md:text-6xl font-bold tracking-tight'>Our Services</h1>
+          <p className='text-gray-300 mt-4 text-lg md:text-xl max-w-2xl border-l-2 border-(--brand-orange) pl-4'>
+            Professional locksmith services tailored to your security needs.
+          </p>
+        </div>
       </div>
-    </Container>
+
+      <Container className='mb-24'>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+          {services?.map((s) => (
+            <div
+              key={s.serviceSlug}
+              className='bg-white border border-gray-200 p-8 rounded-2xl hover:border-(--brand-orange) hover:shadow-xl transition-all group group-hover:-translate-y-1'
+            >
+              <h2 className='text-xl font-bold mb-3 text-gray-900'>{s.title}</h2>
+              <p className='text-gray-500 mb-6 leading-relaxed'>{s.summary}</p>
+              <Link href={`/${industry}/${slug}/services/${s.serviceSlug}`}>
+                <Button variant='ghost' className='pl-0 hover:pl-2 hover:bg-transparent hover:text-(--brand-orange) transition-all font-semibold'>
+                  Learn More &rarr;
+                </Button>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </div>
   );
 }
 
@@ -429,65 +472,100 @@ export function ServiceDetail({ service, industry, slug }: TemplateProps) {
   if (!service) return <div>Service not found</div>;
 
   return (
-    <Container className='py-12 mt-16 md:mt-24'>
-      <Link
-        href={`/${industry}/${slug}/services`}
-        className='text-gray-500 font-medium text-sm hover:text-(--brand-orange) transition-colors mb-6 block'
-      >
-        &larr; Back to Services
-      </Link>
-      <div className='grid lg:grid-cols-3 gap-12'>
-        <div className='lg:col-span-2'>
-          <h1 className='text-4xl lg:text-5xl font-bold mb-8 text-gray-900 tracking-tight'>{service.title}</h1>
-          <div className='prose prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-a:text-(--brand-orange)'>
-            <p className='text-xl leading-relaxed text-gray-700 font-medium mb-8 pb-8 border-b border-gray-200'>{service.summary}</p>
-            <p>
-              Every security situation is unique, and our approach to {service.title.toLowerCase()} reflects that. We use industry-approved materials
-              and leverage years of experience to ensure the best possible outcome for your property.
-            </p>
-            <h3>Why choose us for this service?</h3>
-            <ul>
-              <li>Fully certified and vetted locksmiths</li>
-              <li>Fixed, transparent pricing with no hidden fees</li>
-              <li>Workmanship guaranteed for 12 months</li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <div className='bg-gray-50 border border-gray-100 p-8 rounded-2xl sticky top-32 text-center'>
-            <Siren className='w-12 h-12 text-(--brand-orange) mx-auto mb-4' />
-            <h2 className='text-2xl font-bold mb-4 text-gray-900'>Need Immediate Help?</h2>
-            <p className='text-gray-500 mb-6'>Our emergency response team is available 24/7 across the local area.</p>
-            <Link href={`tel:07000000000`}>
-              <Button size='lg' className='w-full rounded-full bg-(--brand-orange) hover:bg-black text-white font-bold h-12'>
-                Call Us Now
-              </Button>
-            </Link>
-          </div>
+    <div className='bg-gray-50 flex-1 w-full'>
+      {/* Short Hero */}
+      <div className='relative rounded-2xl overflow-hidden mx-4 mt-4 h-[40vh] min-h-[350px] max-h-[450px] mb-16'>
+        <Image
+          src='https://www.lockout247.co.uk/wp-content/uploads/2025/03/Reliable-Locksmith-Essex-scaled.jpeg'
+          alt={service.title}
+          fill
+          priority
+          className='object-cover'
+        />
+        <div className='absolute inset-0 bg-black/75 z-10' />
+        <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-end pb-12 px-4 md:px-6'>
+          <Link
+            href={`/${industry}/${slug}/services`}
+            className='text-(--brand-orange) font-medium text-sm hover:text-white transition-colors mb-4 block'
+          >
+            &larr; Back to Services
+          </Link>
+          <h1 className='text-white text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>{service.title}</h1>
         </div>
       </div>
-    </Container>
+
+      <Container className='mb-24'>
+        <div className='grid lg:grid-cols-3 gap-12'>
+          <div className='lg:col-span-2'>
+            <div className='prose prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-a:text-(--brand-orange)'>
+              <p className='text-xl leading-relaxed text-gray-700 font-medium mb-8 pb-8 border-b border-gray-200'>{service.summary}</p>
+              <p>
+                Every security situation is unique, and our approach to {service.title.toLowerCase()} reflects that. We use industry-approved
+                materials and leverage years of experience to ensure the best possible outcome for your property.
+              </p>
+              <h3>Why choose us for this service?</h3>
+              <ul>
+                <li>Fully certified and vetted locksmiths</li>
+                <li>Fixed, transparent pricing with no hidden fees</li>
+                <li>Workmanship guaranteed for 12 months</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div className='bg-gray-50 border border-gray-100 p-8 rounded-2xl sticky top-32 text-center'>
+              <Siren className='w-12 h-12 text-(--brand-orange) mx-auto mb-4' />
+              <h2 className='text-2xl font-bold mb-4 text-gray-900'>Need Immediate Help?</h2>
+              <p className='text-gray-500 mb-6'>Our emergency response team is available 24/7 across the local area.</p>
+              <Link href={`tel:07000000000`}>
+                <Button size='lg' className='w-full rounded-full bg-(--brand-orange) hover:bg-black text-white font-bold h-12'>
+                  Call Us Now
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </div>
   );
 }
 
 export function BlogIndex({ posts, industry, slug }: TemplateProps) {
   return (
-    <Container className='py-12 mt-16 md:mt-24'>
-      <h1 className='text-4xl font-bold mb-10 text-gray-900 tracking-tight'>Security Advice & News</h1>
-      <div className='grid md:grid-cols-2 gap-8'>
-        {posts?.map((p) => (
-          <Link
-            href={`/${industry}/${slug}/blog/${p.postSlug}`}
-            key={p.postSlug}
-            className='group bg-white rounded-2xl p-8 border border-gray-200 hover:border-(--brand-orange) transition-all hover:shadow-lg'
-          >
-            <span className='inline-block text-xs font-bold uppercase tracking-wider text-gray-400 mb-3'>{p.publishedAt}</span>
-            <h2 className='text-2xl font-bold text-gray-900 group-hover:text-(--brand-orange) transition-colors mb-3'>{p.title}</h2>
-            <p className='text-gray-500 leading-relaxed line-clamp-2'>{p.excerpt}</p>
-          </Link>
-        ))}
+    <div className='bg-gray-50 flex-1 w-full'>
+      {/* Short Hero */}
+      <div className='relative rounded-2xl overflow-hidden mx-4 mt-4 h-[40vh] min-h-[350px] max-h-[450px] mb-16'>
+        <Image
+          src='https://www.lockout247.co.uk/wp-content/uploads/2025/03/Reliable-Locksmith-Essex-scaled.jpeg'
+          alt='Security Advice & News'
+          fill
+          priority
+          className='object-cover'
+        />
+        <div className='absolute inset-0 bg-black/75 z-10' />
+        <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-end pb-12 px-4 md:px-6'>
+          <h1 className='text-white text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>Security Advice & News</h1>
+          <p className='text-gray-300 mt-4 text-lg md:text-xl max-w-2xl border-l-2 border-(--brand-orange) pl-4'>
+            Expert tips, updates, and guides to keep your property safe.
+          </p>
+        </div>
       </div>
-    </Container>
+
+      <Container className='mb-24'>
+        <div className='grid md:grid-cols-2 gap-8'>
+          {posts?.map((p) => (
+            <Link
+              href={`/${industry}/${slug}/blog/${p.postSlug}`}
+              key={p.postSlug}
+              className='group bg-white rounded-2xl p-8 border border-gray-200 hover:border-(--brand-orange) transition-all hover:shadow-lg'
+            >
+              <span className='inline-block text-xs font-bold uppercase tracking-wider text-gray-400 mb-3'>{p.publishedAt}</span>
+              <h2 className='text-2xl font-bold text-gray-900 group-hover:text-(--brand-orange) transition-colors mb-3'>{p.title}</h2>
+              <p className='text-gray-500 leading-relaxed line-clamp-2'>{p.excerpt}</p>
+            </Link>
+          ))}
+        </div>
+      </Container>
+    </div>
   );
 }
 
@@ -495,30 +573,47 @@ export function BlogPost({ post, industry, slug }: TemplateProps) {
   if (!post) return <div>Post not found</div>;
 
   return (
-    <Container className='py-16 mt-16 md:mt-24 max-w-3xl'>
-      <Link href={`/${industry}/${slug}/blog`} className='text-gray-500 font-medium text-sm hover:text-(--brand-orange) transition-colors mb-8 block'>
-        &larr; Back to Articles
-      </Link>
-      <div className='mb-10 text-center'>
-        <span className='inline-block text-sm font-bold uppercase tracking-wider text-(--brand-orange) mb-4'>{post.publishedAt}</span>
-        <h1 className='text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight'>{post.title}</h1>
+    <div className='bg-gray-50 flex-1 w-full'>
+      {/* Short Hero */}
+      <div className='relative rounded-2xl overflow-hidden mx-4 mt-4 h-[40vh] min-h-[350px] max-h-[450px] mb-16'>
+        <Image
+          src='https://www.lockout247.co.uk/wp-content/uploads/2025/03/Reliable-Locksmith-Essex-scaled.jpeg'
+          alt={post.title}
+          fill
+          priority
+          className='object-cover'
+        />
+        <div className='absolute inset-0 bg-black/75 z-10' />
+        <div className='absolute inset-0 z-30 container mx-auto max-w-3xl flex flex-col justify-end pb-12 px-4 md:px-6 text-center text-balance'>
+          <span className='inline-block text-sm font-bold uppercase tracking-wider text-(--brand-orange) mb-4'>{post.publishedAt}</span>
+          <h1 className='text-white text-4xl md:text-5xl font-bold tracking-tight leading-tight'>{post.title}</h1>
+        </div>
       </div>
-      <article className='prose prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-a:text-(--brand-orange)'>
-        <p className='text-xl leading-relaxed text-gray-800 font-medium'>{post.excerpt}</p>
-        <hr className='my-8' />
-        <p>
-          Maintaining the security of your property is an ongoing responsibility. When evaluating your home or business defenses, it pays to consider
-          the quality of the locks and the surrounding hardware.
-        </p>
-        <p>
-          A high-quality lock installed by a professional can often be the single difference in preventing an unauthorized entry. We always advise
-          checking that your locks meet current BS3621 standards to ensure you conform with standard home insurance policies.
-        </p>
-        <blockquote>
-          "An ounce of prevention is worth a pound of cure, especially when it comes to the safety of your family and property."
-        </blockquote>
-        <p>If you have questions about upgrading your security or need an immediate assessment, do not hesitate to contact our expert team.</p>
-      </article>
-    </Container>
+
+      <Container className='max-w-3xl mb-24'>
+        <Link
+          href={`/${industry}/${slug}/blog`}
+          className='text-gray-500 font-medium text-sm hover:text-(--brand-orange) transition-colors mb-8 block'
+        >
+          &larr; Back to Articles
+        </Link>
+        <article className='prose prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-a:text-(--brand-orange)'>
+          <p className='text-xl leading-relaxed text-gray-800 font-medium'>{post.excerpt}</p>
+          <hr className='my-8' />
+          <p>
+            Maintaining the security of your property is an ongoing responsibility. When evaluating your home or business defenses, it pays to
+            consider the quality of the locks and the surrounding hardware.
+          </p>
+          <p>
+            A high-quality lock installed by a professional can often be the single difference in preventing an unauthorized entry. We always advise
+            checking that your locks meet current BS3621 standards to ensure you conform with standard home insurance policies.
+          </p>
+          <blockquote>
+            "An ounce of prevention is worth a pound of cure, especially when it comes to the safety of your family and property."
+          </blockquote>
+          <p>If you have questions about upgrading your security or need an immediate assessment, do not hesitate to contact our expert team.</p>
+        </article>
+      </Container>
+    </div>
   );
 }
