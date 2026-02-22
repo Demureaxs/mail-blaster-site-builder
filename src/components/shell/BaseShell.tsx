@@ -14,7 +14,7 @@ export function BaseShell({ children, lead, industry, slug, ctaLink }: BaseShell
   return (
     <div className='flex min-h-screen bg-gray-50 flex-col relative'>
       {/* ── Scrolling Promo Banner ─────────────────────────────────── */}
-      <div className='bg-(--dark-bg) text-white py-2.5 overflow-hidden rounded-t-xl'>
+      <div className='bg-(--dark-bg) text-white py-2.5 overflow-hidden'>
         <div className='flex animate-marquee whitespace-nowrap'>
           {[...Array(2)].map((_, i) => (
             <div key={i} className='flex items-center gap-8 mx-4'>
@@ -46,7 +46,7 @@ export function BaseShell({ children, lead, industry, slug, ctaLink }: BaseShell
       </div>
 
       {/* ── Default Header / Navigation (Absolute top underneath the banner) */}
-      <div className='absolute top-[44px] left-0 w-full z-50 py-6 pointer-events-none'>
+      <div className='absolute top-11 left-0 w-full z-50 py-6 pointer-events-none'>
         <header className='container mx-auto max-w-7xl flex h-16 items-center justify-between px-4 md:px-6 pointer-events-auto'>
           <div className='flex-1 flex items-center justify-between gap-4 pr-8'>
             {/* Logo */}
