@@ -13,6 +13,19 @@ interface BaseShellProps {
 export function BaseShell({ children, lead, industry, slug, ctaLink }: BaseShellProps) {
   return (
     <div className='flex min-h-screen bg-gray-50 flex-col relative'>
+      {/* ── Purchase Demo Banner ─────────────────────────────────── */}
+      <div className='bg-black text-white h-11 flex items-center justify-center px-4 relative z-[100] border-b border-gray-800'>
+        <div className='flex items-center gap-3 sm:gap-4 text-sm'>
+          <span className='font-medium hidden md:inline'>This is a live preview of your new website.</span>
+          <span className='font-bold text-(--brand-orange)'>Ready to launch?</span>
+          <Link href={process.env.STRIPE_PAYMENT_LINK || '#'}>
+            <button className='cursor-pointer bg-(--brand-orange) hover:bg-white text-white hover:text-black px-5 py-1 rounded-full text-xs font-bold transition-all ease-in-out duration-500 shadow-lg shadow-(--brand-orange)/20'>
+              Claim This Website
+            </button>
+          </Link>
+        </div>
+      </div>
+
       {/* ── Scrolling Promo Banner ─────────────────────────────────── */}
       <div className='bg-(--dark-bg) text-white py-2.5 overflow-hidden'>
         <div className='flex animate-marquee whitespace-nowrap'>
@@ -46,13 +59,13 @@ export function BaseShell({ children, lead, industry, slug, ctaLink }: BaseShell
       </div>
 
       {/* ── Default Header / Navigation (Absolute top underneath the banner) */}
-      <div className='absolute top-11 left-0 w-full z-50 py-6 pointer-events-none'>
+      <div className='absolute top-[84px] left-0 w-full z-50 py-6 pointer-events-none'>
         <header className='container mx-auto max-w-7xl flex h-16 items-center justify-between px-4 md:px-6 pointer-events-auto'>
           <div className='flex-1 flex items-center justify-between gap-4 pr-8'>
             {/* Logo */}
             <Link
               href={industry && slug ? `/${industry}/${slug}` : '/'}
-              className='flex items-center gap-3 p-2 pr-4 rounded-xl shadow-lg transition-all'
+              className='flex items-center gap-3 p-2 pr-4 rounded-xl shadow-lg transition-all ease-in-out duration-500'
             >
               <div className='w-9 h-9 rounded-lg bg-(--brand-orange) flex items-center justify-center shadow-md'>
                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' className='w-5 h-5'>
@@ -68,13 +81,22 @@ export function BaseShell({ children, lead, industry, slug, ctaLink }: BaseShell
             <nav className='hidden md:flex items-center gap-8 text-sm font-bold tracking-wide'>
               {industry && slug ? (
                 <>
-                  <Link href={`/${industry}/${slug}`} className='text-white hover:text-(--brand-orange) transition-colors drop-shadow-md'>
+                  <Link
+                    href={`/${industry}/${slug}`}
+                    className='text-white hover:text-(--brand-orange) transition-all ease-in-out duration-500 drop-shadow-md'
+                  >
                     Home
                   </Link>
-                  <Link href={`/${industry}/${slug}/services`} className='text-white hover:text-(--brand-orange) transition-colors drop-shadow-md'>
+                  <Link
+                    href={`/${industry}/${slug}/services`}
+                    className='text-white hover:text-(--brand-orange) transition-all ease-in-out duration-500 drop-shadow-md'
+                  >
                     Services
                   </Link>
-                  <Link href={`/${industry}/${slug}/blog`} className='text-white hover:text-(--brand-orange) transition-colors drop-shadow-md'>
+                  <Link
+                    href={`/${industry}/${slug}/blog`}
+                    className='text-white hover:text-(--brand-orange) transition-all ease-in-out duration-500 drop-shadow-md'
+                  >
                     Blog
                   </Link>
                 </>
@@ -87,10 +109,10 @@ export function BaseShell({ children, lead, industry, slug, ctaLink }: BaseShell
           {/* CTA Button */}
           <div className='flex items-center gap-3'>
             <Link href={`tel:${lead?.phone || ''}`}>
-              <button className='cursor-pointer group inline-flex items-center gap-3 bg-white border border-transparent hover:border-white rounded-full pl-5 pr-1.5 py-1.5 text-sm font-bold text-gray-900 transition-all shadow-xl'>
+              <button className='cursor-pointer group inline-flex items-center gap-3 bg-white border border-transparent hover:border-white rounded-full pl-5 pr-1.5 py-1.5 text-sm font-bold text-gray-900 transition-all ease-in-out duration-500 shadow-xl'>
                 CONTACT US
-                <span className='w-8 h-8 rounded-full bg-(--brand-orange) group-hover:bg-black flex items-center justify-center transition-all'>
-                  <Phone className='h-4 w-4 text-white group-hover:rotate-12 transition-all' />
+                <span className='w-8 h-8 rounded-full bg-(--brand-orange) group-hover:bg-black flex items-center justify-center transition-all ease-in-out duration-500'>
+                  <Phone className='h-4 w-4 text-white group-hover:rotate-12 transition-all ease-in-out duration-500' />
                 </span>
               </button>
             </Link>
@@ -130,10 +152,10 @@ export function BaseShell({ children, lead, industry, slug, ctaLink }: BaseShell
                 friendly team is ready to assist.
               </p>
               <Link href={`tel:${lead?.phone || ''}`}>
-                <button className='group inline-flex items-center gap-4 bg-(--brand-orange) text-white rounded-full px-8 py-4 text-sm font-bold tracking-wider hover:bg-[#e55020] transition-colors shadow-lg shadow-(--brand-orange)/20'>
+                <button className='cursor-pointer group inline-flex items-center gap-4 bg-(--brand-orange) text-white rounded-full px-8 py-4 text-sm font-bold tracking-wider hover:bg-[#e55020] transition-all ease-in-out duration-500 shadow-lg shadow-(--brand-orange)/20'>
                   GET STARTED NOW
-                  <span className='w-8 h-8 rounded-full bg-white/20 group-hover:bg-white flex items-center justify-center transition-colors'>
-                    <ArrowRight className='w-4 h-4 text-white group-hover:text-(--brand-orange) -rotate-45 group-hover:rotate-0 transition-transform duration-300' />
+                  <span className='w-8 h-8 rounded-full bg-white/20 group-hover:bg-white flex items-center justify-center transition-all ease-in-out duration-500'>
+                    <ArrowRight className='w-4 h-4 text-white group-hover:text-(--brand-orange) -rotate-45 group-hover:rotate-0 transition-all ease-in-out duration-500' />
                   </span>
                 </button>
               </Link>
@@ -148,13 +170,13 @@ export function BaseShell({ children, lead, industry, slug, ctaLink }: BaseShell
             <nav className='flex items-center gap-8 text-sm font-semibold tracking-wide'>
               {industry && slug && (
                 <>
-                  <Link href={`/${industry}/${slug}`} className='text-gray-400 hover:text-white transition-colors'>
+                  <Link href={`/${industry}/${slug}`} className='text-gray-400 hover:text-white transition-all ease-in-out duration-500'>
                     Home
                   </Link>
-                  <Link href={`/${industry}/${slug}/services`} className='text-gray-400 hover:text-white transition-colors'>
+                  <Link href={`/${industry}/${slug}/services`} className='text-gray-400 hover:text-white transition-all ease-in-out duration-500'>
                     Services
                   </Link>
-                  <Link href={`/${industry}/${slug}/blog`} className='text-gray-400 hover:text-white transition-colors'>
+                  <Link href={`/${industry}/${slug}/blog`} className='text-gray-400 hover:text-white transition-all ease-in-out duration-500'>
                     Blog
                   </Link>
                 </>

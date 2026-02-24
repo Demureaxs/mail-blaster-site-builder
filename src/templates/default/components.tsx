@@ -49,15 +49,15 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
 
               <div className='mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4'>
                 <Link href={`tel:${lead?.phone || '07000 000000'}`}>
-                  <button className='group inline-flex items-center justify-between gap-6 bg-(--brand-orange) hover:bg-white border border-transparent rounded-full pl-6 pr-2 py-2 text-base font-bold text-white hover:text-black transition-all duration-300 hover:shadow-xl shadow-(--brand-orange)/20'>
-                    CALL US NOW: {lead?.phone || '07000 000000'}
-                    <span className='w-10 h-10 rounded-full bg-white group-hover:bg-black flex items-center justify-center transition-colors duration-300'>
-                      <Phone className='h-4 w-4 text-(--brand-orange) group-hover:text-white group-hover:rotate-12 transition-transform duration-300' />
+                  <button className='cursor-pointer group inline-flex items-center justify-between gap-6 bg-(--brand-orange) hover:bg-white border border-transparent rounded-full pl-6 pr-2 py-2 text-base font-bold text-white hover:text-black transition-all ease-in-out duration-500 hover:shadow-xl shadow-(--brand-orange)/20'>
+                    CALL US NOW
+                    <span className='w-10 h-10 rounded-full bg-white group-hover:bg-black flex items-center justify-center transition-all ease-in-out duration-500'>
+                      <Phone className='h-4 w-4 text-(--brand-orange) group-hover:text-white group-hover:rotate-12 transition-all ease-in-out duration-500' />
                     </span>
                   </button>
                 </Link>
                 <Link href={`/${industry}/${slug}/services`}>
-                  <button className='inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold text-white hover:text-gray-900 hover:bg-white transition-all duration-300 border border-white/30 hover:border-white'>
+                  <button className='cursor-pointer inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold text-white hover:text-gray-900 hover:bg-white transition-all ease-in-out duration-500 border border-white/30 hover:border-white'>
                     View Our Services
                   </button>
                 </Link>
@@ -72,7 +72,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
         <div className='flex flex-col lg:flex-row gap-12 lg:gap-20 items-stretch'>
           {/* Image Container */}
           <div className='flex-1 relative group'>
-            <div className='absolute -inset-4 bg-(--brand-orange)/10 rounded-3xl -z-10 group-hover:bg-(--brand-orange)/20 transition-colors duration-700' />
+            <div className='absolute -inset-4 bg-(--brand-orange)/10 rounded-3xl -z-10 group-hover:bg-(--brand-orange)/20 transition-all ease-in-out duration-500' />
             <Image
               src='https://www.banham.co.uk/media/wysiwyg/lock-repair-body.png'
               alt='Professional Lock Repair and Installation'
@@ -89,7 +89,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
           </div>
 
           {/* Content Container */}
-          <div className='flex-1 flex flex-col bg-white p-8 lg:p-12 rounded-2xl shadow-sm border border-gray-100 justify-center group hover:border-(--brand-orange)/30 transition-colors duration-500'>
+          <div className='flex-1 flex flex-col bg-white p-8 lg:p-12 rounded-2xl shadow-sm border border-gray-100 justify-center group hover:border-(--brand-orange)/30 transition-all ease-in-out duration-500'>
             <div className='space-y-6'>
               <div className='flex items-center gap-3'>
                 <span className='h-0.5 w-8 bg-(--brand-orange) rounded-full'></span>
@@ -135,10 +135,10 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
 
               <div className='pt-6'>
                 <Link href={`tel:${lead?.phone || ''}`}>
-                  <button className='group inline-flex items-center gap-4 bg-(--brand-orange) hover:bg-black text-white rounded-full pl-6 pr-1.5 py-1.5 text-sm font-bold tracking-wide transition-all duration-300 shadow-xl shadow-(--brand-orange)/20'>
+                  <button className='cursor-pointer group inline-flex items-center gap-4 bg-(--brand-orange) hover:bg-black text-white rounded-full pl-6 pr-1.5 py-1.5 text-sm font-bold tracking-wide transition-all ease-in-out duration-500 shadow-xl shadow-(--brand-orange)/20'>
                     REQUEST ASSISTANCE
-                    <span className='w-10 h-10 rounded-full bg-white group-hover:bg-(--brand-orange) flex items-center justify-center transition-colors duration-300'>
-                      <Phone className='h-4 w-4 text-gray-900 group-hover:text-white group-hover:rotate-12 transition-transform duration-300' />
+                    <span className='w-10 h-10 rounded-full bg-white group-hover:bg-(--brand-orange) flex items-center justify-center transition-all ease-in-out duration-500'>
+                      <Phone className='h-4 w-4 text-gray-900 group-hover:text-white group-hover:rotate-12 transition-all ease-in-out duration-500' />
                     </span>
                   </button>
                 </Link>
@@ -185,12 +185,12 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
             ].map((step, idx) => (
               <div
                 key={idx}
-                className='bg-white p-8 rounded-2xl shadow-sm border border-gray-100 relative group hover:border-(--brand-orange)/50 hover:shadow-xl transition-all duration-300'
+                className='bg-white p-8 rounded-2xl shadow-sm border border-gray-100 relative group hover:border-(--brand-orange)/50 hover:shadow-xl transition-all ease-in-out duration-500'
               >
-                <div className='text-6xl font-black text-gray-100 group-hover:text-(--brand-orange)/10 transition-colors absolute top-4 right-6'>
+                <div className='text-6xl font-black text-gray-100 group-hover:text-(--brand-orange)/10 transition-all ease-in-out duration-500 absolute top-4 right-6'>
                   {step.num}
                 </div>
-                <div className='w-12 h-12 rounded-full bg-(--brand-orange)/10 flex items-center justify-center text-(--brand-orange) font-bold mb-6 group-hover:bg-(--brand-orange) group-hover:text-white transition-colors relative z-10'>
+                <div className='w-12 h-12 rounded-full bg-(--brand-orange)/10 flex items-center justify-center text-(--brand-orange) font-bold mb-6 group-hover:bg-(--brand-orange) group-hover:text-white transition-all ease-in-out duration-500 relative z-10'>
                   {idx + 1}
                 </div>
                 <h3 className='text-xl font-bold text-gray-900 mb-3 relative z-10'>{step.title}</h3>
@@ -213,7 +213,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
           </div>
           <Link
             href={`/${industry}/${slug}/services`}
-            className='inline-flex items-center gap-2 font-bold text-gray-900 hover:text-(--brand-orange) transition-colors border-b-2 border-transparent hover:border-(--brand-orange) pb-1'
+            className='inline-flex items-center gap-2 font-bold text-gray-900 hover:text-(--brand-orange) transition-all ease-in-out duration-500 border-b-2 border-transparent hover:border-(--brand-orange) pb-1'
           >
             View All Services &rarr;
           </Link>
@@ -222,7 +222,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
         <div className='grid md:grid-cols-3 gap-6'>
           {/* Main big service card */}
           <div className='md:col-span-2 bg-(--dark-bg) rounded-2xl p-8 lg:p-12 text-white relative overflow-hidden group'>
-            <div className='absolute right-0 bottom-0 opacity-10 group-hover:scale-110 transition-transform duration-700 pointer-events-none'>
+            <div className='absolute right-0 bottom-0 opacity-10 group-hover:scale-110 transition-all ease-in-out duration-500 pointer-events-none'>
               <Key className='w-64 h-64' strokeWidth={1} />
             </div>
             <div className='relative z-10'>
@@ -235,7 +235,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
                 back inside safely.
               </p>
               <Link href={`tel:${lead?.phone || ''}`}>
-                <button className='bg-(--brand-orange) hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-8 rounded-full transition-colors'>
+                <button className='cursor-pointer bg-(--brand-orange) hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-8 rounded-full transition-all ease-in-out duration-500'>
                   Call For Emergency Help
                 </button>
               </Link>
@@ -283,10 +283,10 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
           ].map((srv, idx) => (
             <div
               key={idx}
-              className='bg-white p-8 rounded-2xl border border-gray-200 hover:border-(--brand-orange) hover:shadow-xl transition-all group flex flex-col justify-between cursor-default'
+              className='bg-white p-8 rounded-2xl border border-gray-200 hover:border-(--brand-orange) hover:shadow-xl transition-all ease-in-out duration-500 group flex flex-col justify-between cursor-default'
             >
               <div>
-                <div className='w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-(--brand-orange) mb-6 group-hover:scale-110 transition-transform'>
+                <div className='w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-(--brand-orange) mb-6 group-hover:scale-110 transition-all ease-in-out duration-500'>
                   <srv.icon className='w-6 h-6' />
                 </div>
                 <div className='inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs font-bold mb-3 uppercase tracking-wider'>
@@ -410,11 +410,11 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
 
             <div className='flex flex-col sm:flex-row justify-center gap-4'>
               <Link href={`tel:${lead?.phone || ''}`}>
-                <button className='w-full sm:w-auto bg-black text-white hover:bg-gray-900 rounded-full px-8 py-4 text-lg font-bold transition-colors shadow-xl'>
+                <button className='cursor-pointer w-full sm:w-auto bg-black text-white hover:bg-gray-900 rounded-full px-8 py-4 text-lg font-bold transition-all ease-in-out duration-500 shadow-xl'>
                   Call {lead?.phone || 'Us Now'}
                 </button>
               </Link>
-              <button className='w-full sm:w-auto bg-white text-(--brand-orange) hover:bg-gray-50 rounded-full px-8 py-4 text-lg font-bold transition-colors shadow-xl'>
+              <button className='cursor-pointer w-full sm:w-auto bg-white text-(--brand-orange) hover:bg-gray-50 rounded-full px-8 py-4 text-lg font-bold transition-all ease-in-out duration-500 shadow-xl'>
                 Request A Call Back
               </button>
             </div>
@@ -451,12 +451,15 @@ export function ServicesIndex({ lead, services, industry, slug }: TemplateProps)
           {services?.map((s) => (
             <div
               key={s.serviceSlug}
-              className='bg-white border border-gray-200 p-8 rounded-2xl hover:border-(--brand-orange) hover:shadow-xl transition-all group group-hover:-translate-y-1'
+              className='bg-white border border-gray-200 p-8 rounded-2xl hover:border-(--brand-orange) hover:shadow-xl transition-all ease-in-out duration-500 group group-hover:-translate-y-1'
             >
               <h2 className='text-xl font-bold mb-3 text-gray-900'>{s.title}</h2>
               <p className='text-gray-500 mb-6 leading-relaxed'>{s.summary}</p>
               <Link href={`/${industry}/${slug}/services/${s.serviceSlug}`}>
-                <Button variant='ghost' className='pl-0 hover:pl-2 hover:bg-transparent hover:text-(--brand-orange) transition-all font-semibold'>
+                <Button
+                  variant='ghost'
+                  className='pl-0 hover:pl-2 hover:bg-transparent hover:text-(--brand-orange) transition-all ease-in-out duration-500 font-semibold'
+                >
                   Learn More &rarr;
                 </Button>
               </Link>
@@ -486,7 +489,7 @@ export function ServiceDetail({ service, industry, slug }: TemplateProps) {
         <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-end pb-12 px-4 md:px-6'>
           <Link
             href={`/${industry}/${slug}/services`}
-            className='text-(--brand-orange) font-medium text-sm hover:text-white transition-colors mb-4 block'
+            className='text-(--brand-orange) font-medium text-sm hover:text-white transition-all ease-in-out duration-500 mb-4 block'
           >
             &larr; Back to Services
           </Link>
@@ -498,17 +501,23 @@ export function ServiceDetail({ service, industry, slug }: TemplateProps) {
         <div className='grid lg:grid-cols-3 gap-12'>
           <div className='lg:col-span-2'>
             <div className='prose prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-a:text-(--brand-orange)'>
-              <p className='text-xl leading-relaxed text-gray-700 font-medium mb-8 pb-8 border-b border-gray-200'>{service.summary}</p>
-              <p>
-                Every security situation is unique, and our approach to {service.title.toLowerCase()} reflects that. We use industry-approved
-                materials and leverage years of experience to ensure the best possible outcome for your property.
-              </p>
-              <h3>Why choose us for this service?</h3>
-              <ul>
-                <li>Fully certified and vetted locksmiths</li>
-                <li>Fixed, transparent pricing with no hidden fees</li>
-                <li>Workmanship guaranteed for 12 months</li>
-              </ul>
+              {service.htmlContent ? (
+                <div dangerouslySetInnerHTML={{ __html: service.htmlContent }} />
+              ) : (
+                <>
+                  <p className='text-xl leading-relaxed text-gray-700 font-medium mb-8 pb-8 border-b border-gray-200'>{service.summary}</p>
+                  <p>
+                    Every security situation is unique, and our approach to {service.title.toLowerCase()} reflects that. We use industry-approved
+                    materials and leverage years of experience to ensure the best possible outcome for your property.
+                  </p>
+                  <h3>Why choose us for this service?</h3>
+                  <ul>
+                    <li>Fully certified and vetted locksmiths</li>
+                    <li>Fixed, transparent pricing with no hidden fees</li>
+                    <li>Workmanship guaranteed for 12 months</li>
+                  </ul>
+                </>
+              )}
             </div>
           </div>
           <div>
@@ -556,10 +565,12 @@ export function BlogIndex({ posts, industry, slug }: TemplateProps) {
             <Link
               href={`/${industry}/${slug}/blog/${p.postSlug}`}
               key={p.postSlug}
-              className='group bg-white rounded-2xl p-8 border border-gray-200 hover:border-(--brand-orange) transition-all hover:shadow-lg'
+              className='group bg-white rounded-2xl p-8 border border-gray-200 hover:border-(--brand-orange) transition-all ease-in-out duration-500 hover:shadow-lg'
             >
               <span className='inline-block text-xs font-bold uppercase tracking-wider text-gray-400 mb-3'>{p.publishedAt}</span>
-              <h2 className='text-2xl font-bold text-gray-900 group-hover:text-(--brand-orange) transition-colors mb-3'>{p.title}</h2>
+              <h2 className='text-2xl font-bold text-gray-900 group-hover:text-(--brand-orange) transition-all ease-in-out duration-500 mb-3'>
+                {p.title}
+              </h2>
               <p className='text-gray-500 leading-relaxed line-clamp-2'>{p.excerpt}</p>
             </Link>
           ))}
@@ -593,25 +604,31 @@ export function BlogPost({ post, industry, slug }: TemplateProps) {
       <Container className='max-w-3xl mb-24'>
         <Link
           href={`/${industry}/${slug}/blog`}
-          className='text-gray-500 font-medium text-sm hover:text-(--brand-orange) transition-colors mb-8 block'
+          className='text-gray-500 font-medium text-sm hover:text-(--brand-orange) transition-all ease-in-out duration-500 mb-8 block'
         >
           &larr; Back to Articles
         </Link>
         <article className='prose prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-a:text-(--brand-orange)'>
-          <p className='text-xl leading-relaxed text-gray-800 font-medium'>{post.excerpt}</p>
-          <hr className='my-8' />
-          <p>
-            Maintaining the security of your property is an ongoing responsibility. When evaluating your home or business defenses, it pays to
-            consider the quality of the locks and the surrounding hardware.
-          </p>
-          <p>
-            A high-quality lock installed by a professional can often be the single difference in preventing an unauthorized entry. We always advise
-            checking that your locks meet current BS3621 standards to ensure you conform with standard home insurance policies.
-          </p>
-          <blockquote>
-            "An ounce of prevention is worth a pound of cure, especially when it comes to the safety of your family and property."
-          </blockquote>
-          <p>If you have questions about upgrading your security or need an immediate assessment, do not hesitate to contact our expert team.</p>
+          {post.htmlContent ? (
+            <div dangerouslySetInnerHTML={{ __html: post.htmlContent }} />
+          ) : (
+            <>
+              <p className='text-xl leading-relaxed text-gray-800 font-medium'>{post.excerpt}</p>
+              <hr className='my-8' />
+              <p>
+                Maintaining the security of your property is an ongoing responsibility. When evaluating your home or business defenses, it pays to
+                consider the quality of the locks and the surrounding hardware.
+              </p>
+              <p>
+                A high-quality lock installed by a professional can often be the single difference in preventing an unauthorized entry. We always
+                advise checking that your locks meet current BS3621 standards to ensure you conform with standard home insurance policies.
+              </p>
+              <blockquote>
+                "An ounce of prevention is worth a pound of cure, especially when it comes to the safety of your family and property."
+              </blockquote>
+              <p>If you have questions about upgrading your security or need an immediate assessment, do not hesitate to contact our expert team.</p>
+            </>
+          )}
         </article>
       </Container>
     </div>

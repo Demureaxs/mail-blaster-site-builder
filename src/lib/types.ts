@@ -18,6 +18,7 @@ export interface ServicePage {
   serviceSlug: string;
   title: string;
   summary?: string;
+  htmlContent?: string;
   blocks?: Array<{ type: string; data: any }>;
 }
 
@@ -25,6 +26,7 @@ export interface BlogPost {
   postSlug: string;
   title: string;
   excerpt?: string;
+  htmlContent?: string;
   publishedAt?: string;
   author?: string;
   blocks?: Array<{ type: string; data: any }>;
