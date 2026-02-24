@@ -1,7 +1,7 @@
-import * as XLSX from "xlsx";
-import * as path from "path";
-import * as fs from "fs";
-import { LeadConfig, ServicePage, BlogPost } from "./types";
+import * as XLSX from 'xlsx';
+import * as path from 'path';
+import * as fs from 'fs';
+import { LeadConfig, ServicePage, BlogPost } from './types';
 
 /**
  * XLSX column mapping (headerless sheet):
@@ -21,11 +21,11 @@ import { LeadConfig, ServicePage, BlogPost } from "./types";
 function toSlug(name: string): string {
   return name
     .toLowerCase()
-    .replace(/·link yang dikunjungi/gi, "") // strip artefact
-    .replace(/['']/g, "")                   // strip curly quotes
-    .replace(/&/g, "and")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replace(/·link yang dikunjungi/gi, '') // strip artefact
+    .replace(/['']/g, '') // strip curly quotes
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 // ── In-memory cache ──────────────────────────────────────────────────
@@ -33,11 +33,13 @@ let cachedLeads: Map<string, LeadConfig> | null = null;
 
 function getXlsxPath(): string {
   // Works both in dev (process.cwd()) and prod
-  return path.join(process.cwd(), "public", "Locksmiths UK.xlsx");
+  return path.join(process.cwd(), 'public', 'Locksmiths UK.xlsx');
 }
 
 function loadLeads(): Map<string, LeadConfig> {
-  if (cachedLeads) return cachedLeads;
+  // Only use in-memory cache in production. During development,
+  // re-reading the XLSX file allows live content updates.
+  if (process.env.NODE_ENV !== 'development' && cachedLeads) return cachedLeads;
 
   const filePath = getXlsxPath();
   if (!fs.existsSync(filePath)) {
@@ -47,7 +49,7 @@ function loadLeads(): Map<string, LeadConfig> {
   }
 
   const fileBuffer = fs.readFileSync(filePath);
-  const wb = XLSX.read(fileBuffer, { type: "buffer" });
+  const wb = XLSX.read(fileBuffer, { type: 'buffer' });
   const ws = wb.Sheets[wb.SheetNames[0]];
   // Read as array-of-arrays (no header row)
   const rows: any[][] = XLSX.utils.sheet_to_json(ws, { header: 1 });
@@ -60,7 +62,7 @@ function loadLeads(): Map<string, LeadConfig> {
 
     const rawName: string = String(row[0]);
     // Clean the business name
-    const businessName = rawName.replace(/·Link yang dikunjungi/gi, "").trim();
+    const businessName = rawName.replace(/·Link yang dikunjungi/gi, '').trim();
 
     let baseSlug = toSlug(rawName);
     if (!baseSlug) continue;
@@ -71,12 +73,12 @@ function loadLeads(): Map<string, LeadConfig> {
     const slug = count === 0 ? baseSlug : `${baseSlug}-${count + 1}`;
 
     // Check if row already has a slug in column 9
-    const existingSlug = row[9] ? String(row[9]).trim() : "";
+    const existingSlug = row[9] ? String(row[9]).trim() : '';
     const finalSlug = existingSlug || slug;
 
     const lead: LeadConfig = {
       businessName,
-      industry: "locksmiths",
+      industry: 'locksmiths',
       slug: finalSlug,
       address: row[1] ? String(row[1]).trim() : undefined,
       phone: row[3] ? String(row[3]).trim() : undefined,
@@ -99,42 +101,25 @@ export function invalidateCache(): void {
 
 // ── Public API (same signatures as kv.ts) ────────────────────────────
 
-export async function getLead(
-  industry: string,
-  slug: string
-): Promise<LeadConfig | null> {
+export async function getLead(industry: string, slug: string): Promise<LeadConfig | null> {
   const leads = loadLeads();
   return leads.get(slug) || null;
 }
 
-export async function getServices(
-  industry: string,
-  slug: string
-): Promise<ServicePage[] | null> {
+export async function getServices(industry: string, slug: string): Promise<ServicePage[] | null> {
   // No per-lead services in the XLSX — fall through to template defaults
   return null;
 }
 
-export async function getService(
-  industry: string,
-  slug: string,
-  serviceSlug: string
-): Promise<ServicePage | null> {
+export async function getService(industry: string, slug: string, serviceSlug: string): Promise<ServicePage | null> {
   return null;
 }
 
-export async function getBlogIndex(
-  industry: string,
-  slug: string
-): Promise<BlogPost[] | null> {
+export async function getBlogIndex(industry: string, slug: string): Promise<BlogPost[] | null> {
   return null;
 }
 
-export async function getPost(
-  industry: string,
-  slug: string,
-  postSlug: string
-): Promise<BlogPost | null> {
+export async function getPost(industry: string, slug: string, postSlug: string): Promise<BlogPost | null> {
   return null;
 }
 
