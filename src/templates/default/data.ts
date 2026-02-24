@@ -7,13 +7,19 @@ export const defaultServices: ServicePage[] = [
     summary: 'Rapid-response non-destructive entry for homes, businesses, and vehicles.',
     htmlContent: `
       <h2>Immediate Assistance When You're Locked Out</h2>
-      <p>Being locked out of your home, office, or vehicle is incredibly stressful and always happens at the worst possible time. Our emergency lockout service is designed to solve your access problems quickly, safely, and without unnecessary costs.</p>
+      <p>Being locked out of your home, office, or vehicle is incredibly stressful.</p>
+      <p>It always happens at the worst possible time.</p>
+      <p>Our emergency lockout service is designed to solve your access problems quickly, safely, and without unnecessary costs.</p>
       
       <h3>Our Non-Destructive Approach</h3>
-      <p>Unlike some operators who immediately reach for the drill, our highly trained technicians specialize in <strong>non-destructive entry methods</strong>. By using advanced lock-picking tools and bypass techniques, we can often open your door without damaging the lock itself. This means your existing keys will still work, saving you the expense of a replacement cylinder.</p>
+      <p>Unlike some operators who immediately reach for the drill, our highly trained technicians specialize in <strong>non-destructive entry methods</strong>.</p>
+      <p>By using advanced lock-picking tools and bypass techniques, we can often open your door without damaging the lock itself.</p>
+      <p>This means your existing keys will still work, saving you the expense of a replacement cylinder.</p>
       
       <h3>When Might We Need to Change a Lock?</h3>
-      <p>While we aim to pick every lock, modern high-security locks (like 3-Star TS007 cylinders) are specifically designed to resist picking and snapping. If we have to bypass these high-security mechanisms, we may need to replace the lock. However, we will <em>always</em> explain the situation and agree on pricing before undertaking any destructive entry.</p>
+      <p>While we aim to pick every lock, modern high-security locks (like 3-Star TS007 cylinders) are specifically designed to resist picking and snapping.</p>
+      <p>If we have to bypass these high-security mechanisms, we may need to replace the lock.</p>
+      <p>However, we will <em>always</em> explain the situation and agree on pricing before undertaking any destructive entry.</p>
 
       <h3>Fast Response Times</h3>
       <ul>
@@ -22,7 +28,8 @@ export const defaultServices: ServicePage[] = [
         <li><strong>Fully Stocked:</strong> Should your lock need replacing, our vans carry a wide array of British Standard locks, so we manage the situation in a single visit.</li>
       </ul>
 
-      <p>If you are currently locked out, do not wait. <a href="tel:07000000000" class="font-bold text-[--brand-orange] hover:underline">Click here to call our emergency dispatch team immediately.</a></p>
+      <p>If you are currently locked out, do not wait.</p>
+      <p><a href="tel:07000000000" class="font-bold text-[--brand-orange] hover:underline">Click here to call our emergency dispatch team immediately.</a></p>
     `,
   },
   {
@@ -31,10 +38,12 @@ export const defaultServices: ServicePage[] = [
     summary: 'High-security anti-snap locks and deadbolts installed to British Standards.',
     htmlContent: `
       <h2>Upgrade Your Security with British Standard Locks</h2>
-      <p>Many homeowners are unaware that the locks securing their front and back doors run the risk of failing modern security standards. "Lock snapping" is a common method used by intruders to break into homes with UPVC or composite doors in under 15 seconds. Our <a href="./upvc-doors" class="text-[--brand-orange] hover:underline">UPVC Door specialists</a> can replace your vulnerable cylinders with high-security alternatives.</p>
+      <p>Many homeowners are unaware that the locks securing their front and back doors run the risk of failing modern security standards.</p>
+      <p>"Lock snapping" is a common method used by intruders to break into homes with UPVC or composite doors in under 15 seconds.</p>
+      <p>Our <a href="./upvc-doors" class="text-[--brand-orange] hover:underline">UPVC Door specialists</a> can replace your vulnerable cylinders with high-security alternatives.</p>
 
       <h3>Why Upgrade?</h3>
-      <p>A lock replacement is recommended when:</p>
+      <p>A lock replacement is highly recommended when:</p>
       <ul>
         <li>You have just moved into a new property and don't know who has spare keys</li>
         <li>Your current locks are sticking, jamming, or difficult to turn</li>
@@ -43,8 +52,12 @@ export const defaultServices: ServicePage[] = [
       </ul>
 
       <h3>Our Installation Standards</h3>
-      <p>Our locksmiths exclusively install trusted, high-security brands. Every residential lock replacement is guaranteed to meet or exceed the requirements of standard home insurance policies. By upgrading, we ensure that your property is protected against snapping, bumping, picking, and drilling.</p>
-      <p>Ready to upgrade your home defense? Reach out to schedule a <a href="tel:07000000000" class="text-[--brand-orange] hover:underline">free home security assessment</a>.</p>
+      <p>Our locksmiths exclusively install trusted, high-security brands.</p>
+      <p>Every residential lock replacement is guaranteed to meet or exceed the requirements of standard home insurance policies.</p>
+      <p>By upgrading, we ensure that your property is protected against snapping, bumping, picking, and drilling.</p>
+      <br/>
+      <p>Ready to upgrade your home defense?</p>
+      <p>Reach out to schedule a <a href="tel:07000000000" class="text-[--brand-orange] hover:underline font-bold">free home security assessment</a>.</p>
     `,
   },
   {
@@ -53,7 +66,9 @@ export const defaultServices: ServicePage[] = [
     summary: 'Specialist repair and replacement of multipoint UPVC locking mechanisms.',
     htmlContent: `
       <h2>Expert UPVC Door & Window Solutions</h2>
-      <p>UPVC and composite doors provide excellent insulation and security, but their internal mechanisms (multipoint locks) are complex and prone to wear over time. If your door handle is floppy, stiff, or entirely jammed, you need a specialist.</p>
+      <p>UPVC and composite doors provide excellent insulation and security.</p>
+      <p>However, their internal mechanisms (multipoint locks) are complex and prone to wear over time.</p>
+      <p>If your door handle is floppy, stiff, or entirely jammed, you need a specialist.</p>
       
       <h3>Common UPVC Problems We Fix</h3>
       <ul>
@@ -63,8 +78,12 @@ export const defaultServices: ServicePage[] = [
       </ul>
 
       <h3>Cost-Effective Repairs</h3>
-      <p>Many customers believe they need a whole new door when the multipoint lock fails. This is rarely the case. We carry dozens of different gearboxes and central mechanisms to repair your existing door quickly and at a fraction of the cost of a replacement door.</p>
-      <p>Do you need to secure a new window locking handle or upgrade your euro cylinders? We do that too! Check out our <a href="./lock-replacement" class="text-[--brand-orange] hover:underline">Lock Replacement & Upgrades service</a> for more info.</p>
+      <p>Many customers believe they need a whole new door when the multipoint lock fails. This is rarely the case.</p>
+      <p>We carry dozens of different gearboxes and central mechanisms to repair your existing door quickly.</p>
+      <p>This provides a solution at a fraction of the cost of a replacement door.</p>
+      <br />
+      <p>Do you need to secure a new window locking handle or upgrade your euro cylinders?</p>
+      <p>We do that too! Check out our <a href="./lock-replacement" class="text-[--brand-orange] hover:underline font-bold">Lock Replacement & Upgrades service</a> for more info.</p>
     `,
   },
   {
@@ -73,7 +92,9 @@ export const defaultServices: ServicePage[] = [
     summary: 'Master key systems, digital locks, and high-security business installations.',
     htmlContent: `
       <h2>Protecting Your Business and Assets</h2>
-      <p>Securing a commercial premises requires a significantly different approach than a residential property. You must balance high-level security with ease of access for employees, fire safety regulations, and key control. Our Commercial Access team specializes in tailoring solutions for offices, retail stores, and industrial sites.</p>
+      <p>Securing a commercial premises requires a significantly different approach than a residential property.</p>
+      <p>You must balance high-level security with ease of access for employees, fire safety regulations, and key control.</p>
+      <p>Our Commercial Access team specializes in tailoring solutions for offices, retail stores, and industrial sites.</p>
 
       <h3>Master Key Suites</h3>
       <p>Managing dozens of keys across different departments is inefficient and risky. We design and install comprehensive Master Key systems where:</p>
@@ -84,9 +105,12 @@ export const defaultServices: ServicePage[] = [
       </ul>
 
       <h3>Digital & Smart Access Control</h3>
-      <p>Move away from physical keys entirely. We install mechanical push-button locks, electronic keypad entry, and advanced smart-card / fob systems. If an employee leaves, you don't need to change the locks—simply revoke their fob's access from the central portal.</p>
-
-      <p>Protecting your commercial premises also means dealing with emergencies swiftly. Our <a href="./burglary-repairs" class="text-[--brand-orange] hover:underline">Burglary Repairs team</a> is available 24/7 if your business has suffered a break-in.</p>
+      <p>Move away from physical keys entirely.</p>
+      <p>We install mechanical push-button locks, electronic keypad entry, and advanced smart-card / fob systems.</p>
+      <p>If an employee leaves, you don't need to change the locks—simply revoke their fob's access from the central portal.</p>
+      <br />
+      <p>Protecting your commercial premises also means dealing with emergencies swiftly.</p>
+      <p>Our <a href="./burglary-repairs" class="text-[--brand-orange] hover:underline font-bold">Burglary Repairs team</a> is available 24/7 if your business has suffered a break-in.</p>
     `,
   },
   {
@@ -95,7 +119,8 @@ export const defaultServices: ServicePage[] = [
     summary: 'Precision key duplication on-site for mortice, cylinder, and high-security keys.',
     htmlContent: `
       <h2>Precision Mobile Key Cutting</h2>
-      <p>Don't waste time traveling to a high street kiosk only to find the duplicated key doesn't work. Our fleet of vans is equipped with state-of-the-art key cutting machinery calibrated to duplicate a massive variety of keys flawlessly <em>at your location.</em></p>
+      <p>Don't waste time traveling to a high street kiosk only to find the duplicated key doesn't work.</p>
+      <p>Our fleet of vans is equipped with state-of-the-art key cutting machinery calibrated to duplicate a massive variety of keys flawlessly <em>at your location.</em></p>
 
       <h3>Types of Keys We Cut</h3>
       <ul>
@@ -106,9 +131,11 @@ export const defaultServices: ServicePage[] = [
       </ul>
 
       <h3>Guaranteed to Work</h3>
-      <p>The major advantage of mobile key cutting is that we test the newly cut key in your lock immediately. If it needs a microscopic adjustment to turn smoothly, we make it right then and there. High street shops cannot test the lock, leading to frustrating return trips.</p>
-
-      <p>If you're upgrading your security, we can cut extra keys on the spot during our <a href="./lock-replacement" class="text-[--brand-orange] hover:underline">Lock Replacement</a> service.</p>
+      <p>The major advantage of mobile key cutting is that we test the newly cut key in your lock immediately.</p>
+      <p>If it needs a microscopic adjustment to turn smoothly, we make it right then and there.</p>
+      <p>High street shops cannot test the lock, leading to frustrating return trips.</p>
+      <br />
+      <p>If you're upgrading your security, we can cut extra keys on the spot during our <a href="./lock-replacement" class="text-[--brand-orange] hover:underline font-bold">Lock Replacement</a> service.</p>
     `,
   },
   {
@@ -117,21 +144,27 @@ export const defaultServices: ServicePage[] = [
     summary: 'Vehicle entry, transponder key programming, and broken key extraction.',
     htmlContent: `
       <h2>Rapid Auto Locksmithing for All Vehicles</h2>
-      <p>Losing your car keys, locking them inside the vehicle, or breaking a key in the ignition can ruin your entire day. Our specialist auto locksmith team provides roadside assistance to get you back behind the wheel quickly and safely.</p>
+      <p>Losing your car keys, locking them inside the vehicle, or breaking a key in the ignition can ruin your entire day.</p>
+      <p>Our specialist auto locksmith team provides roadside assistance to get you back behind the wheel quickly and safely.</p>
 
       <h3>Damage-Free Vehicle Entry</h3>
-      <p>Using specialized Lishi decoders and varying techniques, we can pick the door locks of 95%+ of modern cars, vans, and trucks without leaving a single scratch on the paintwork or damaging the door seals. We entirely bypass the costly and damaging "wedge and rod" methods used by some recovery services.</p>
+      <p>Using specialized Lishi decoders and varying techniques, we can pick the door locks of 95%+ of modern cars, vans, and trucks.</p>
+      <p>We do this without leaving a single scratch on the paintwork or damaging the door seals.</p>
+      <p>We entirely bypass the costly and damaging "wedge and rod" methods used by some recovery services.</p>
 
       <h3>Key Replacement & Programming</h3>
-      <p>Modern vehicle keys are complex transponders that communicate with your car's immobilizer. If you have lost all your keys, we can:</p>
+      <p>Modern vehicle keys are complex transponders that communicate with your car's immobilizer.</p>
+      <p>If you have lost all your keys, we can:</p>
       <ul>
         <li>Decode your door lock to cut a physical emergency blade</li>
         <li>Connect to the vehicle's OBD port to extract the necessary PIN codes</li>
         <li>Program a brand new transponder fob to your vehicle and delete the old lost keys from the ECU</li>
       </ul>
-      <p>All of this is done on the side of the road, saving you the exorbitant cost and hassle of towing your car to the main dealer.</p>
-
-      <p>Need immediate roadside help? <a href="tel:07000000000" class="text-[--brand-orange] hover:underline">Get an auto expert on the way.</a></p>
+      <p>All of this is done on the side of the road.</p>
+      <p>This saves you the exorbitant cost and hassle of towing your car to the main dealer.</p>
+      <br />
+      <p>Need immediate roadside help?</p>
+      <p><a href="tel:07000000000" class="text-[--brand-orange] hover:underline font-bold">Get an auto expert on the way.</a></p>
     `,
   },
   {
@@ -140,10 +173,12 @@ export const defaultServices: ServicePage[] = [
     summary: 'Immediate post-break-in securing, boarding up, and lock replacement.',
     htmlContent: `
       <h2>Emergency Break-In Response</h2>
-      <p>Experiencing a break-in is traumatic and leaves you feeling incredibly vulnerable. Our priority in these situations is responding immediately, securing your property, and restoring your peace of mind so you can focus on the recovery process.</p>
+      <p>Experiencing a break-in is traumatic and leaves you feeling incredibly vulnerable.</p>
+      <p>Our priority in these situations is responding immediately, securing your property, and restoring your peace of mind so you can focus on the recovery process.</p>
 
       <h3>Securing the Premises</h3>
-      <p>If doors, frames, or windows have been severely damaged to gain entry, we will make the property watertight and physically secure right away. If the damage is too extensive to immediately refit a door, we provide heavy-duty boarding up services to secure the structure overnight.</p>
+      <p>If doors, frames, or windows have been severely damaged to gain entry, we will make the property watertight and physically secure right away.</p>
+      <p>If the damage is too extensive to immediately refit a door, we provide heavy-duty boarding up services to secure the structure overnight.</p>
 
       <h3>Comprehensive Repairs and Upgrades</h3>
       <ul>
@@ -152,7 +187,10 @@ export const defaultServices: ServicePage[] = [
         <li><strong>Frame Reinforcement:</strong> If the wooden frame has been splintered, we can supply and fit London bars and Birmingham bars to reinforce the structural integrity of the frame.</li>
       </ul>
 
-      <p>If you have just suffered a break-in, make sure to notify the authorities. Once you are safe, we will dispatch an emergency technician immediately. Consider our <a href="./lock-replacement" class="text-[--brand-orange] hover:underline">Lock Upgrade services</a> to ensure your property meets modern security standards against future attacks.</p>
+      <p>If you have just suffered a break-in, make sure to notify the authorities.</p>
+      <p>Once you are safe, we will dispatch an emergency technician immediately.</p>
+      <br />
+      <p>Consider our <a href="./lock-replacement" class="text-[--brand-orange] hover:underline font-bold">Lock Upgrade services</a> to ensure your property meets modern security standards against future attacks.</p>
     `,
   },
 ];
