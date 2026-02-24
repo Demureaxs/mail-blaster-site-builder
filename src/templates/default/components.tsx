@@ -1,9 +1,11 @@
+import remarkGfm from 'remark-gfm';
+import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 import { TemplateProps } from '../types';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import Image from 'next/image';
-import { Phone, Siren, Award, Clock, ShieldCheck, Key, CheckCircle2, Star, Wrench, Home, Car, Shield } from 'lucide-react';
+import { Phone, Siren, Award, Clock, ShieldCheck, Key, CheckCircle2, Star, Wrench, Home, Car, Shield, CheckCircle } from 'lucide-react';
 
 export function DemoHome({ lead, industry, slug }: TemplateProps) {
   return (
@@ -429,7 +431,7 @@ export function ServicesIndex({ lead, services, industry, slug }: TemplateProps)
   return (
     <div className='bg-gray-50 flex-1 w-full'>
       {/* Short Hero */}
-      <div className='relative rounded-2xl overflow-hidden mx-4 mt-4 h-[40vh] min-h-[350px] max-h-[450px] mb-16'>
+      <div className='relative overflow-hidden h-[40vh] min-h-[350px] max-h-[450px]'>
         <Image
           src='https://www.lockout247.co.uk/wp-content/uploads/2025/03/Reliable-Locksmith-Essex-scaled.jpeg'
           alt='Our Services'
@@ -437,47 +439,103 @@ export function ServicesIndex({ lead, services, industry, slug }: TemplateProps)
           priority
           className='object-cover'
         />
-        <div className='absolute inset-0 bg-black/75 z-10' />
-        <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-end pb-12 px-4 md:px-6'>
-          <h1 className='text-white text-4xl md:text-6xl font-bold tracking-tight'>Our Services</h1>
-          <p className='text-gray-300 mt-4 text-lg md:text-xl max-w-2xl border-l-2 border-(--brand-orange) pl-4'>
-            Professional locksmith services tailored to your security needs.
+        <div className='absolute inset-0 bg-black/80 z-10' />
+        <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-center px-4 md:px-6 text-center text-balance'>
+          <h1 className='text-white text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6'>Comprehensive Security Solutions</h1>
+          <p className='text-gray-300 text-lg md:text-xl max-w-3xl mx-auto'>
+            From emergency lockouts to enterprise-grade access control, our certified specialists are equipped to handle any situation with speed and
+            precision.
           </p>
         </div>
       </div>
 
-      <Container className='mb-24'>
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+      <Container className='py-24'>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {services?.map((s) => (
             <div
               key={s.serviceSlug}
-              className='bg-white border border-gray-200 p-8 rounded-2xl hover:border-(--brand-orange) hover:shadow-xl transition-all ease-in-out duration-500 group group-hover:-translate-y-1'
+              className='bg-white border border-gray-200 p-8 rounded-2xl hover:border-(--brand-orange) hover:shadow-2xl transition-all ease-in-out duration-500 group flex flex-col justify-between'
             >
-              <h2 className='text-xl font-bold mb-3 text-gray-900'>{s.title}</h2>
-              <p className='text-gray-500 mb-6 leading-relaxed'>{s.summary}</p>
+              <div>
+                <div className='w-12 h-12 rounded-xl bg-(--brand-orange)/10 flex items-center justify-center mb-6 group-hover:bg-(--brand-orange) transition-all ease-in-out duration-500'>
+                  <ShieldCheck className='w-6 h-6 text-(--brand-orange) group-hover:text-white transition-all ease-in-out duration-500' />
+                </div>
+                <h2 className='text-2xl font-bold mb-4 text-gray-900 group-hover:text-(--brand-orange) transition-colors'>{s.title}</h2>
+                <p className='text-gray-500 leading-relaxed mb-8'>{s.summary}</p>
+              </div>
               <Link href={`/${industry}/${slug}/services/${s.serviceSlug}`}>
-                <Button
-                  variant='ghost'
-                  className='pl-0 hover:pl-2 hover:bg-transparent hover:text-(--brand-orange) transition-all ease-in-out duration-500 font-semibold'
-                >
-                  Learn More &rarr;
-                </Button>
+                <button className='w-full cursor-pointer bg-gray-50 hover:bg-black text-gray-900 hover:text-white font-bold py-3 px-6 rounded-xl transition-all ease-in-out duration-500 group-hover:shadow-lg'>
+                  Explore Service
+                </button>
               </Link>
             </div>
           ))}
         </div>
       </Container>
+
+      {/* Trust Indicators Section */}
+      <section className='bg-white py-24'>
+        <Container>
+          <div className='text-center max-w-3xl mx-auto mb-16'>
+            <h2 className='text-3xl md:text-4xl font-bold text-gray-900 mb-6'>Why Partner With Us?</h2>
+            <p className='text-gray-500 text-lg'>
+              We don't just fix locks; we provide peace of mind through certified expertise and transparent practices.
+            </p>
+          </div>
+          <div className='grid md:grid-cols-3 gap-12'>
+            <div className='text-center'>
+              <div className='w-16 h-16 mx-auto bg-gray-50 rounded-full flex items-center justify-center mb-6 text-(--brand-orange)'>
+                <ShieldCheck className='w-8 h-8' />
+              </div>
+              <h3 className='text-xl font-bold text-gray-900 mb-3'>Certified Professionals</h3>
+              <p className='text-gray-500'>All technicians are fully vetted, insured, and certified to install British Standard hardware.</p>
+            </div>
+            <div className='text-center'>
+              <div className='w-16 h-16 mx-auto bg-gray-50 rounded-full flex items-center justify-center mb-6 text-(--brand-orange)'>
+                <Clock className='w-8 h-8' />
+              </div>
+              <h3 className='text-xl font-bold text-gray-900 mb-3'>Rapid Response</h3>
+              <p className='text-gray-500'>Local vans mean we can reach most emergency calls within 30-45 minutes of dispatch.</p>
+            </div>
+            <div className='text-center'>
+              <div className='w-16 h-16 mx-auto bg-gray-50 rounded-full flex items-center justify-center mb-6 text-(--brand-orange)'>
+                <svg className='w-8 h-8 fill-current' viewBox='0 0 24 24'>
+                  <path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z' />
+                </svg>
+              </div>
+              <h3 className='text-xl font-bold text-gray-900 mb-3'>Transparent Pricing</h3>
+              <p className='text-gray-500'>We provide fixed quotes before starting any work. No hidden fees or surprise hourly rates.</p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Bottom CTA */}
+      <section className='bg-black py-20 px-4'>
+        <div className='max-w-4xl mx-auto text-center'>
+          <h2 className='text-3xl md:text-4xl font-bold text-white mb-8'>Require Custom Security Solutions?</h2>
+          <p className='text-gray-400 text-lg mb-10 max-w-2xl mx-auto'>
+            If you manage a commercial property or require specialized access control systems, our engineers can design a bespoke solution for your
+            needs.
+          </p>
+          <Link href={`tel:${lead?.phone || ''}`}>
+            <button className='cursor-pointer bg-(--brand-orange) hover:bg-white text-white hover:text-black font-bold text-lg px-8 py-4 rounded-full transition-all ease-in-out duration-500 shadow-xl shadow-(--brand-orange)/20'>
+              Contact Subject Matter Experts
+            </button>
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
 
-export function ServiceDetail({ service, industry, slug }: TemplateProps) {
+export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) {
   if (!service) return <div>Service not found</div>;
 
   return (
     <div className='bg-gray-50 flex-1 w-full'>
       {/* Short Hero */}
-      <div className='relative rounded-2xl overflow-hidden mx-4 mt-4 h-[40vh] min-h-[350px] max-h-[450px] mb-16'>
+      <div className='relative overflow-hidden h-[40vh] min-h-[350px] max-h-[450px]'>
         <Image
           src='https://www.lockout247.co.uk/wp-content/uploads/2025/03/Reliable-Locksmith-Essex-scaled.jpeg'
           alt={service.title}
@@ -485,22 +543,27 @@ export function ServiceDetail({ service, industry, slug }: TemplateProps) {
           priority
           className='object-cover'
         />
-        <div className='absolute inset-0 bg-black/75 z-10' />
-        <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-end pb-12 px-4 md:px-6'>
+        <div className='absolute inset-0 bg-black/80 z-10' />
+        <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-center px-4 md:px-6'>
           <Link
             href={`/${industry}/${slug}/services`}
-            className='text-(--brand-orange) font-medium text-sm hover:text-white transition-all ease-in-out duration-500 mb-4 block'
+            className='inline-flex items-center text-(--brand-orange) font-medium text-sm hover:text-white transition-all ease-in-out duration-500 mb-6 bg-white/10 w-fit px-4 py-1.5 rounded-full'
           >
             &larr; Back to Services
           </Link>
-          <h1 className='text-white text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>{service.title}</h1>
+          <div className='max-w-3xl'>
+            <h1 className='text-white text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4'>{service.title}</h1>
+            <p className='text-gray-300 text-lg md:text-xl'>{service.summary}</p>
+          </div>
         </div>
       </div>
 
-      <Container className='mb-24'>
-        <div className='grid lg:grid-cols-3 gap-12'>
+      <Container className='py-20'>
+        <div className='grid lg:grid-cols-3 gap-12 lg:gap-16'>
+          {/* Main Content Column */}
           <div className='lg:col-span-2'>
-            <div className='prose prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-a:text-(--brand-orange)'>
+            {/* HTML Body */}
+            <div className='prose prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-a:text-(--brand-orange) prose-strong:text-gray-900 prose-li:marker:text-[--brand-orange]'>
               {service.htmlContent ? (
                 <div dangerouslySetInnerHTML={{ __html: service.htmlContent }} />
               ) : (
@@ -510,26 +573,140 @@ export function ServiceDetail({ service, industry, slug }: TemplateProps) {
                     Every security situation is unique, and our approach to {service.title.toLowerCase()} reflects that. We use industry-approved
                     materials and leverage years of experience to ensure the best possible outcome for your property.
                   </p>
-                  <h3>Why choose us for this service?</h3>
-                  <ul>
-                    <li>Fully certified and vetted locksmiths</li>
-                    <li>Fixed, transparent pricing with no hidden fees</li>
-                    <li>Workmanship guaranteed for 12 months</li>
-                  </ul>
                 </>
               )}
             </div>
+
+            <hr className='my-16 border-gray-200' />
+
+            {/* Our Process section */}
+            <div className='mb-16'>
+              <h2 className='text-3xl font-bold text-gray-900 mb-8'>How We Handle {service.title}</h2>
+              <div className='space-y-6'>
+                {[
+                  {
+                    step: '01',
+                    title: 'Initial Assessment',
+                    desc: 'We evaluate your specific security needs or emergency situation immediately upon arriving at your property.',
+                  },
+                  {
+                    step: '02',
+                    title: 'Transparent Quotation',
+                    desc: 'Before any work begins, we provide a clear, fixed-price quote outlining the labor and hardware costs. No surprises.',
+                  },
+                  {
+                    step: '03',
+                    title: 'Professional Execution',
+                    desc: 'Our certified engineers complete the work using British Standard materials, ensuring long-lasting security and compliance.',
+                  },
+                ].map((process, i) => (
+                  <div key={i} className='flex gap-6 p-6 rounded-2xl bg-white border border-gray-100 shadow-sm'>
+                    <div className='text-3xl font-black text-gray-200'>{process.step}</div>
+                    <div>
+                      <h4 className='text-xl font-bold text-gray-900 mb-2'>{process.title}</h4>
+                      <p className='text-gray-500 leading-relaxed'>{process.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Service FAQ */}
+            <div>
+              <h2 className='text-3xl font-bold text-gray-900 mb-8'>Frequently Asked Questions</h2>
+              <div className='space-y-4'>
+                {[
+                  {
+                    q: `Do you offer warranties on ${service.title.toLowerCase()}?`,
+                    a: 'Yes, all of our installations and replacement parts come with a standard 12-month minimum guarantee for your complete peace of mind.',
+                  },
+                  {
+                    q: 'How quickly can you attend my property?',
+                    a: 'For emergencies, we aim to be on-site within 30 to 45 minutes of your call. Non-emergencies can usually be scheduled for the same or next day.',
+                  },
+                  {
+                    q: 'Are your engineers fully insured?',
+                    a: 'Absolutely. Every technician dispatched to your home or business carries comprehensive public liability insurance and is fully vetted.',
+                  },
+                ].map((faq, i) => (
+                  <div key={i} className='border border-gray-200 rounded-xl p-6 bg-white'>
+                    <h4 className='text-lg font-bold text-gray-900 mb-3 flex items-center justify-between'>
+                      {faq.q}
+                      <span className='text-(--brand-orange)'>+</span>
+                    </h4>
+                    <p className='text-gray-600'>{faq.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
+
+          {/* Sticky Sidebar */}
           <div>
-            <div className='bg-gray-50 border border-gray-100 p-8 rounded-2xl sticky top-32 text-center'>
-              <Siren className='w-12 h-12 text-(--brand-orange) mx-auto mb-4' />
-              <h2 className='text-2xl font-bold mb-4 text-gray-900'>Need Immediate Help?</h2>
-              <p className='text-gray-500 mb-6'>Our emergency response team is available 24/7 across the local area.</p>
-              <Link href={`tel:07000000000`}>
-                <Button size='lg' className='w-full rounded-full bg-(--brand-orange) hover:bg-black text-white font-bold h-12'>
-                  Call Us Now
-                </Button>
-              </Link>
+            <div className='sticky top-32 space-y-8'>
+              {/* Emergency Call Box */}
+              <div className='bg-black p-8 rounded-2xl text-center shadow-2xl relative overflow-hidden'>
+                <div className='absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mt-10' />
+                <Siren className='w-12 h-12 text-(--brand-orange) mx-auto mb-4 relative z-10' />
+                <h3 className='text-2xl font-bold mb-2 text-white relative z-10'>Require Assistance?</h3>
+                <p className='text-gray-400 mb-6 text-sm relative z-10'>
+                  Our dispatch team is standing by 24/7 to assign an engineer to your location.
+                </p>
+                <Link href={`tel:${lead?.phone || '07000000000'}`}>
+                  <button className='w-full cursor-pointer rounded-full bg-(--brand-orange) hover:bg-white text-white hover:text-black font-bold h-14 text-lg transition-all ease-in-out duration-500 relative z-10 shadow-xl shadow-(--brand-orange)/20'>
+                    Call Now
+                  </button>
+                </Link>
+              </div>
+
+              {/* Contact Form MOCK */}
+              <div className='bg-white border border-gray-200 p-8 rounded-2xl shadow-sm'>
+                <h3 className='text-xl font-bold mb-6 text-gray-900'>Request a Callback</h3>
+                <form className='space-y-4'>
+                  <div>
+                    <input
+                      type='text'
+                      placeholder='Full Name'
+                      className='w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-(--brand-orange) focus:ring-2 focus:ring-(--brand-orange)/20 outline-none transition-all'
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type='tel'
+                      placeholder='Phone Number'
+                      className='w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-(--brand-orange) focus:ring-2 focus:ring-(--brand-orange)/20 outline-none transition-all'
+                    />
+                  </div>
+                  <div>
+                    <textarea
+                      placeholder='How can we help?'
+                      rows={3}
+                      className='w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-(--brand-orange) focus:ring-2 focus:ring-(--brand-orange)/20 outline-none transition-all resize-none'
+                    ></textarea>
+                  </div>
+                  <button
+                    type='button'
+                    className='w-full cursor-pointer rounded-xl bg-gray-900 hover:bg-black text-white font-bold h-12 transition-all ease-in-out duration-500'
+                  >
+                    Send Request
+                  </button>
+                </form>
+              </div>
+
+              {/* Service Benefits */}
+              <div className='bg-gray-50 p-8 rounded-2xl border border-gray-100'>
+                <h3 className='text-lg font-bold mb-4 text-gray-900'>Why Choose Us</h3>
+                <ul className='space-y-3'>
+                  {['No Call-Out Fee', 'Fixed Transparent Pricing', 'Vetted & Insured Staff', '12 Month Guarantee', 'Fast Local Response'].map(
+                    (benefit, i) => (
+                      <li key={i} className='flex items-center text-sm font-medium text-gray-600'>
+                        <CheckCircle className='w-4 h-4 text-(--brand-orange) mr-3 flex-shrink-0' />
+                        {benefit}
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -610,7 +787,7 @@ export function BlogPost({ post, industry, slug }: TemplateProps) {
         </Link>
         <article className='prose prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-a:text-(--brand-orange)'>
           {post.htmlContent ? (
-            <div dangerouslySetInnerHTML={{ __html: post.htmlContent }} />
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.htmlContent}</ReactMarkdown>
           ) : (
             <>
               <p className='text-xl leading-relaxed text-gray-800 font-medium'>{post.excerpt}</p>
