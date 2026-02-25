@@ -354,7 +354,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
       </section>
 
       {/* ── 6. Testimonials ────────────────────────────────────────── */}
-      <section className='bg-gray-50 py-16 md:py-24'>
+      <section className='bg-gray-50 py-16'>
         <div className='max-w-7xl mx-auto px-4 md:px-6 text-center'>
           <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-12 sm:mb-16 tracking-tight'>What Our Clients Say</h2>
 
