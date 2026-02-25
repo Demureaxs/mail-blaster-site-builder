@@ -59,7 +59,7 @@ export function BaseShell({ children, lead, industry, slug, ctaLink }: BaseShell
       </div>
 
       {/* ── Default Header / Navigation (Absolute top underneath the banner) */}
-      <div className='absolute top-[84px] left-0 w-full z-50 py-6 pointer-events-none'>
+      <div className='absolute top-[84px] left-0 w-full z-50 pt-6 sm:pt-10 pb-6 pointer-events-none'>
         <header className='container mx-auto max-w-7xl flex h-16 items-center justify-between px-4 md:px-6 pointer-events-auto'>
           <div className='flex-1 flex items-center justify-between gap-4 pr-8'>
             {/* Logo */}
@@ -107,7 +107,7 @@ export function BaseShell({ children, lead, industry, slug, ctaLink }: BaseShell
           </div>
 
           {/* CTA Button */}
-          <div className='flex items-center gap-3'>
+          <div className='flex hidden md:block items-center gap-3'>
             <Link href={`tel:${lead?.phone || ''}`}>
               <button className='cursor-pointer group inline-flex items-center gap-3 bg-white border border-transparent hover:border-white rounded-full pl-5 pr-1.5 py-1.5 text-sm font-bold text-gray-900 transition-all ease-in-out duration-500 shadow-xl'>
                 CONTACT US
