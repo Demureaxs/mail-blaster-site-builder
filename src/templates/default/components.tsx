@@ -433,7 +433,7 @@ export function ServicesIndex({ lead, services, industry, slug }: TemplateProps)
   return (
     <div className='bg-gray-50 flex-1 w-full'>
       {/* Short Hero */}
-      <div className='relative overflow-hidden h-fit py-20 min-h-[350px] max-h-[450px]'>
+      <div className='relative rounded-2xl overflow-hidden mx-3 sm:mx-4 mt-3 sm:mt-4 h-[40vh] min-h-[350px] max-h-[450px] mb-12 sm:mb-16'>
         <Image
           src='https://www.lockout247.co.uk/wp-content/uploads/2025/03/Reliable-Locksmith-Essex-scaled.jpeg'
           alt='Our Services'
@@ -441,12 +441,10 @@ export function ServicesIndex({ lead, services, industry, slug }: TemplateProps)
           priority
           className='object-cover'
         />
-        <div className='absolute inset-0 bg-black/80 z-10' />
-        <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-center px-4 md:px-6 text-center text-balance'>
-          <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6'>
-            Comprehensive Security Solutions
-          </h1>
-          <p className='text-gray-300 text-base sm:text-lg md:text-xl max-w-3xl mx-auto'>
+        <div className='absolute inset-0 bg-black/75 z-10' />
+        <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-end pb-8 sm:pb-12 px-4 md:px-6'>
+          <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>Comprehensive Security Solutions</h1>
+          <p className='text-gray-300 mt-4 text-base sm:text-lg md:text-xl max-w-2xl border-l-2 border-(--brand-orange) pl-4'>
             From emergency lockouts to enterprise-grade access control, our certified specialists are equipped to handle any situation with speed and
             precision.
           </p>
@@ -539,7 +537,7 @@ export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) 
   return (
     <div className='bg-gray-50 flex-1 w-full'>
       {/* Short Hero */}
-      <div className='relative overflow-hidden h-fit py-20 min-h-[350px] max-h-[450px]'>
+      <div className='relative rounded-2xl overflow-hidden mx-3 sm:mx-4 mt-3 sm:mt-4 h-[40vh] min-h-[350px] max-h-[450px] mb-12 sm:mb-16'>
         <Image
           src='https://www.lockout247.co.uk/wp-content/uploads/2025/03/Reliable-Locksmith-Essex-scaled.jpeg'
           alt={service.title}
@@ -547,8 +545,8 @@ export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) 
           priority
           className='object-cover'
         />
-        <div className='absolute inset-0 bg-black/80 z-10' />
-        <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-center px-4 md:px-6'>
+        <div className='absolute inset-0 bg-black/75 z-10' />
+        <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-end pb-8 sm:pb-12 px-4 md:px-6'>
           <Link
             href={`/${industry}/${slug}/services`}
             className='inline-flex items-center text-(--brand-orange) font-medium text-sm hover:text-white transition-all ease-in-out duration-500 mb-6 bg-white/10 w-fit px-4 py-1.5 rounded-full'
@@ -556,8 +554,8 @@ export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) 
             &larr; Back to Services
           </Link>
           <div className='max-w-3xl'>
-            <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4'>{service.title}</h1>
-            <p className='text-gray-300 text-base sm:text-lg md:text-xl'>{service.summary}</p>
+            <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>{service.title}</h1>
+            <p className='text-gray-300 mt-4 text-base sm:text-lg md:text-xl border-l-2 border-(--brand-orange) pl-4'>{service.summary}</p>
           </div>
         </div>
       </div>
@@ -776,11 +774,11 @@ export function BlogPost({ post, industry, slug }: TemplateProps) {
           className='object-cover'
         />
         <div className='absolute inset-0 bg-black/75 z-10' />
-        <div className='absolute inset-0 z-30 container mx-auto max-w-3xl flex flex-col justify-end pb-8 sm:pb-12 px-4 md:px-6 text-center text-balance'>
-          <span className='inline-block text-xs sm:text-sm font-bold uppercase tracking-wider text-(--brand-orange) mb-3 sm:mb-4'>
+        <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-end pb-8 sm:pb-12 px-4 md:px-6'>
+          <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>{post.title}</h1>
+          <span className='inline-block text-xs sm:text-sm font-bold uppercase tracking-wider text-(--brand-orange) mt-4 border-l-2 border-(--brand-orange) pl-4'>
             {post.publishedAt}
           </span>
-          <h1 className='text-white text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight'>{post.title}</h1>
         </div>
       </div>
 
