@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
-import { Figtree } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Figtree } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
+import './globals.css';
 
-const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
+const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
-  title: "Teklytic Preview Demo",
-  description: "Preview your business website.",
+  title: 'Teklytic Preview Demo',
+  description: 'Preview your business website.',
   robots: { index: false, follow: false },
 };
 
@@ -18,14 +19,11 @@ export default function RootLayout({
   const gaId = process.env.NEXT_PUBLIC_GA4_ID;
 
   return (
-    <html lang="en">
+    <html lang='en'>
       <head>
         {gaId && (
           <>
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-            />
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
             <script
               dangerouslySetInnerHTML={{
                 __html: `
@@ -41,6 +39,7 @@ export default function RootLayout({
       </head>
       <body className={`${figtree.variable} font-sans antialiased min-h-screen bg-background`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
