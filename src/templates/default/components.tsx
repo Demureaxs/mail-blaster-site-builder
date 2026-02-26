@@ -9,7 +9,7 @@ import { Phone, Siren, Award, Clock, ShieldCheck, Key, CheckCircle2, Star, Wrenc
 
 export function DemoHome({ lead, industry, slug }: TemplateProps) {
   return (
-    <div className='space-y-16 lg:space-y-32 mb-16 lg:mb-32'>
+    <div className='space-y-16 lg:space-y-32'>
       {/* ── 1. Hero Section ───────────────────────────────────────────── */}
       <div className='relative rounded-2xl overflow-hidden mx-3 sm:mx-4 md:mx-6 mt-3 sm:mt-4 md:mt-6 h-[calc(100dvh-2rem)] min-h-150 md:min-h-175'>
         {/* Background Image */}
@@ -247,45 +247,52 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
           {/* Regular service cards */}
           {[
             {
+              id: 'lock-replacement',
               tag: 'Home Security',
               title: 'Lock Replacement & Upgrades',
               desc: 'Anti-snap cylinder locks and deadbolts installed to British Standards.',
               icon: Wrench,
             },
             {
+              id: 'upvc-repairs',
               tag: 'Specialist',
               title: 'UPVC Door & Window Locks',
               desc: 'Repair and replacement of faulty multipoint UPVC locking mechanisms.',
               icon: Home,
             },
             {
+              id: 'commercial-security',
               tag: 'Business',
               title: 'Commercial Access Control',
               desc: 'Master key systems, digital locks, and high-security installations.',
               icon: Award,
             },
             {
+              id: 'key-cutting',
               tag: 'In-Store/Mobile',
               title: 'Mobile Key Cutting',
               desc: 'Precision key duplication on-site for mortice and cylinder keys.',
               icon: Key,
             },
             {
+              id: 'auto-locksmith',
               tag: 'Vehicle',
               title: 'Auto Locksmith Services',
               desc: 'Vehicle entry, transponder key programming, and broken key extraction.',
               icon: Car,
             },
             {
+              id: 'burglary-repairs',
               tag: 'Emergency',
               title: 'Burglary Repairs & Boarding',
               desc: 'Immediate post-break-in securing, boarding up, and lock replacement.',
               icon: Shield,
             },
           ].map((srv, idx) => (
-            <div
+            <Link
               key={idx}
-              className='bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 hover:border-(--brand-orange) hover:shadow-xl transition-all ease-in-out duration-500 group flex flex-col justify-between cursor-default'
+              href={`/${industry}/${slug}/services/${srv.id}`}
+              className='bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 hover:border-(--brand-orange) hover:shadow-xl transition-all ease-in-out duration-500 group flex flex-col justify-between'
             >
               <div>
                 <div className='w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-(--brand-orange) mb-6 group-hover:scale-110 transition-all ease-in-out duration-500'>
@@ -294,10 +301,10 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
                 <div className='inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs font-bold mb-3 uppercase tracking-wider'>
                   {srv.tag}
                 </div>
-                <h3 className='text-xl font-bold text-gray-900 mb-3'>{srv.title}</h3>
+                <h3 className='text-xl font-bold text-gray-900 mb-3 group-hover:text-(--brand-orange) transition-colors'>{srv.title}</h3>
                 <p className='text-gray-500 leading-relaxed'>{srv.desc}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -354,9 +361,9 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
       </section>
 
       {/* ── 6. Testimonials ────────────────────────────────────────── */}
-      <section className='bg-gray-50 py-16'>
+      <section className='bg-gray-50'>
         <div className='max-w-7xl mx-auto px-4 md:px-6 text-center'>
-          <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-12 sm:mb-16 tracking-tight'>What Our Clients Say</h2>
+          <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-8 sm:mb-12 md:mb-16 tracking-tight'>What Our Clients Say</h2>
 
           <div className='grid md:grid-cols-3 gap-6 sm:gap-8 text-left'>
             {[
@@ -399,7 +406,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
       </section>
 
       {/* ── 7. CTA / Contact Section ─────────────────────────────────── */}
-      <section className='max-w-6xl mx-auto px-4 md:px-6 mb-16'>
+      <section className='max-w-6xl mx-auto px-4 md:px-6 mb-8 md:mb-16'>
         <div className='bg-(--brand-orange) rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 text-center relative overflow-hidden'>
           {/* Decorative elements */}
           <div className='absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20' />

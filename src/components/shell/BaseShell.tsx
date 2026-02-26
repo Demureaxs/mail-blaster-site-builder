@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { LeadConfig } from '@/lib/types';
-import { Phone, ArrowRight } from 'lucide-react';
+import { Phone, ArrowRight, MapPin } from 'lucide-react';
 
 interface BaseShellProps {
   children: React.ReactNode;
@@ -142,6 +142,18 @@ export function BaseShell({ children, lead, industry, slug, ctaLink }: BaseShell
                 At <span className='font-bold text-white'>{lead?.businessName || 'our company'}</span>, we take pride in having a team of highly
                 trained, DBS-checked locksmith professionals dedicated to your security and peace of mind across the local area.
               </p>
+
+              {lead?.address && (
+                <div className='flex items-start gap-4 mt-10'>
+                  <div className='w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0 border border-gray-800'>
+                    <MapPin className='w-4 h-4 text-(--brand-orange)' />
+                  </div>
+                  <div>
+                    <h5 className='text-white font-bold mb-1 tracking-wide'>Service Area</h5>
+                    <p className='text-gray-400 text-sm leading-relaxed'>{lead.address}</p>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Right - Let's Talk */}
