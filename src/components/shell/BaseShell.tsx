@@ -149,8 +149,26 @@ export function BaseShell({ children, lead, industry, slug, ctaLink }: BaseShell
                     <MapPin className='w-4 h-4 text-(--brand-orange)' />
                   </div>
                   <div>
-                    <h5 className='text-white font-bold mb-1 tracking-wide'>Service Area</h5>
-                    <p className='text-gray-400 text-sm leading-relaxed'>{lead.address}</p>
+                    <h5 className='text-white font-bold mb-2 tracking-wide'>Service Area</h5>
+                    <div className='flex flex-col gap-0.5'>
+                      {lead.address
+                        .split(',')
+                        .flatMap((part) => {
+                          const trimmed = part.trim();
+                          // Match a typical UK postcode pattern at the end of a string
+                          const postcodeMatch = trimmed.match(/(.*?)\s+([A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2})$/i);
+                          if (postcodeMatch) {
+                            return [postcodeMatch[1].trim(), postcodeMatch[2].trim()];
+                          }
+                          return [trimmed];
+                        })
+                        .filter((part) => part.toLowerCase() !== 'inggris raya' && part.length > 0)
+                        .map((line, idx) => (
+                          <p key={idx} className='text-gray-400 text-sm leading-relaxed'>
+                            {line}
+                          </p>
+                        ))}
+                    </div>
                   </div>
                 </div>
               )}
