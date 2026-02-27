@@ -3,7 +3,6 @@ import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 import { TemplateProps } from '../types';
 import { Container } from '@/components/ui/Container';
-import { Button } from '@/components/ui/Button';
 import Image from 'next/image';
 import { Phone, Siren, Award, Clock, ShieldCheck, Key, CheckCircle2, Star, Wrench, Home, Car, Shield, CheckCircle } from 'lucide-react';
 
@@ -83,7 +82,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
               className='w-full h-full rounded-2xl shadow-2xl object-cover'
             />
             {/* Floating Trust Badge */}
-            <div className='absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 hidden md:flex flex-col items-center justify-center min-w-[160px]'>
+            <div className='absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 hidden md:flex flex-col items-center justify-center min-w-40'>
               <Clock className='h-8 w-8 text-(--brand-orange) mb-2' />
               <p className='text-xs font-bold uppercase tracking-widest text-gray-400 mb-1'>Rapid Response</p>
               <p className='text-(--brand-orange) font-black text-2xl'>30 MINS</p>
@@ -440,7 +439,7 @@ export function ServicesIndex({ lead, services, industry, slug }: TemplateProps)
   return (
     <div className='bg-gray-50 flex-1 w-full'>
       {/* Short Hero */}
-      <div className='relative rounded-2xl overflow-hidden mx-3 sm:mx-4 mt-3 sm:mt-4 h-[40vh] min-h-[350px] max-h-[450px] mb-12 sm:mb-16'>
+      <div className='relative rounded-2xl overflow-hidden mx-3 sm:mx-4 mt-3 sm:mt-4 h-[40vh] min-h-87.5 max-h-112.5 mb-12 sm:mb-16'>
         <Image
           src='https://www.lockout247.co.uk/wp-content/uploads/2025/03/Reliable-Locksmith-Essex-scaled.jpeg'
           alt='Our Services'
@@ -544,7 +543,7 @@ export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) 
   return (
     <div className='bg-gray-50 flex-1 w-full'>
       {/* Short Hero */}
-      <div className='relative rounded-2xl overflow-hidden mx-3 sm:mx-4 mt-3 sm:mt-4 h-[40vh] min-h-[350px] max-h-[450px] mb-12 sm:mb-16'>
+      <div className='relative rounded-2xl overflow-hidden mx-3 sm:mx-4 mt-3 sm:mt-4 h-[40vh] min-h-87.5 max-h-112.5 mb-12 sm:mb-16'>
         <Image
           src='https://www.lockout247.co.uk/wp-content/uploads/2025/03/Reliable-Locksmith-Essex-scaled.jpeg'
           alt={service.title}
@@ -709,7 +708,7 @@ export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) 
                   {['No Call-Out Fee', 'Fixed Transparent Pricing', 'Vetted & Insured Staff', '12 Month Guarantee', 'Fast Local Response'].map(
                     (benefit, i) => (
                       <li key={i} className='flex items-center text-sm font-medium text-gray-600'>
-                        <CheckCircle className='w-4 h-4 text-(--brand-orange) mr-3 flex-shrink-0' />
+                        <CheckCircle className='w-4 h-4 text-(--brand-orange) mr-3 shrink-0' />
                         {benefit}
                       </li>
                     ),
@@ -728,7 +727,7 @@ export function BlogIndex({ posts, industry, slug }: TemplateProps) {
   return (
     <div className='bg-gray-50 flex-1 w-full'>
       {/* Short Hero */}
-      <div className='relative rounded-2xl overflow-hidden mx-3 sm:mx-4 mt-3 sm:mt-4 h-[40vh] min-h-[350px] max-h-[450px] mb-12 sm:mb-16'>
+      <div className='relative rounded-2xl overflow-hidden mx-3 sm:mx-4 mt-3 sm:mt-4 h-[40vh] min-h-87.5 max-h-112.5 mb-12 sm:mb-16'>
         <Image
           src='https://www.lockout247.co.uk/wp-content/uploads/2025/03/Reliable-Locksmith-Essex-scaled.jpeg'
           alt='Security Advice & News'
@@ -772,7 +771,7 @@ export function BlogPost({ post, industry, slug }: TemplateProps) {
   return (
     <div className='bg-gray-50 flex-1 w-full'>
       {/* Short Hero */}
-      <div className='relative rounded-2xl overflow-hidden mx-3 sm:mx-4 mt-3 sm:mt-4 h-[40vh] min-h-[350px] max-h-[450px] mb-12 sm:mb-16'>
+      <div className='relative rounded-2xl overflow-hidden mx-3 sm:mx-4 mt-3 sm:mt-4 h-[40vh] min-h-87.5 max-h-112.5 mb-12 sm:mb-16'>
         <Image
           src='https://www.lockout247.co.uk/wp-content/uploads/2025/03/Reliable-Locksmith-Essex-scaled.jpeg'
           alt={post.title}

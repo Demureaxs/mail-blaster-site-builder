@@ -10,11 +10,11 @@ interface BaseShellProps {
   ctaLink?: string;
 }
 
-export function BaseShell({ children, lead, industry, slug, ctaLink }: BaseShellProps) {
+export function BaseShell({ children, lead, industry, slug }: BaseShellProps) {
   return (
     <div className='flex min-h-screen bg-gray-50 flex-col relative'>
       {/* ── Purchase Demo Banner ─────────────────────────────────── */}
-      <div className='bg-black text-white h-11 flex items-center justify-center px-4 relative z-[100] border-b border-gray-800'>
+      <div className='bg-black text-white h-11 flex items-center justify-center px-4 relative z-100 border-b border-gray-800'>
         <div className='flex items-center gap-3 sm:gap-4 text-sm'>
           <span className='font-medium hidden md:inline'>This is a live preview of your new website.</span>
           <span className='font-bold text-(--brand-orange)'>Ready to launch?</span>
@@ -59,7 +59,7 @@ export function BaseShell({ children, lead, industry, slug, ctaLink }: BaseShell
       </div>
 
       {/* ── Default Header / Navigation (Absolute top underneath the banner) */}
-      <div className='absolute top-[84px] left-0 w-full z-50 pt-6 sm:pt-10 pb-6 pointer-events-none'>
+      <div className='absolute top-21 left-0 w-full z-50 pt-6 sm:pt-10 pb-6 pointer-events-none'>
         <header className='container mx-auto max-w-7xl flex h-16 items-center justify-between px-4 md:px-6 pointer-events-auto'>
           <div className='flex-1 flex items-center justify-between gap-4 pr-8'>
             {/* Logo */}
