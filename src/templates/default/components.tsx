@@ -458,7 +458,7 @@ export function ServicesIndex({ lead, services, industry, slug }: TemplateProps)
         </div>
       </div>
 
-      <Container className='py-24'>
+      <Container className='py-24 -mt-16'>
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {services?.map((s) => (
             <div
@@ -567,7 +567,7 @@ export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) 
         </div>
       </div>
 
-      <Container className='py-20'>
+      <Container className='py-20 -mt-32'>
         <div className='grid lg:grid-cols-3 gap-12 lg:gap-16'>
           {/* Main Content Column */}
           <div className='lg:col-span-2'>
@@ -652,7 +652,7 @@ export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) 
 
           {/* Sticky Sidebar */}
           <div>
-            <div className='sticky top-32 space-y-8'>
+            <div className='sticky top-32 mt-32 space-y-8'>
               {/* Emergency Call Box */}
               <div className='bg-black p-8 rounded-2xl text-center shadow-2xl relative overflow-hidden'>
                 <div className='absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mt-10' />
