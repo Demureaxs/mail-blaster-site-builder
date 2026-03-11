@@ -50,7 +50,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
 
               <div className='mt-8 sm:mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4'>
                 <Link href={`tel:${lead?.phone || '07000 000000'}`}>
-                  <button className='cursor-pointer group inline-flex items-center justify-center gap-6 bg-(--brand-orange) hover:bg-white border border-transparent rounded-full pl-6 pr-2 py-2 text-base font-bold text-white hover:text-black transition-all ease-in-out duration-500 hover:shadow-xl shadow-(--brand-orange)/20'>
+                  <button className='cursor-pointer group inline-flex items-center justify-center gap-6 bg-(--brand-orange) hover:bg-white border border-transparent rounded-full pl-6 pr-2 py-2 text-base font-bold text-white hover:text-black transition-all ease-in-out duration-500 hover:shadow-xl shadow-[#ff6333]/20'>
                     CALL US NOW
                     <span className='w-10 h-10 rounded-full bg-white group-hover:bg-black flex items-center justify-center shrink-0 transition-all ease-in-out duration-500'>
                       <Phone className='h-4 w-4 text-(--brand-orange) group-hover:text-white group-hover:rotate-12 transition-all ease-in-out duration-500' />
@@ -73,7 +73,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
         <div className='flex flex-col lg:flex-row gap-12 lg:gap-20 items-stretch'>
           {/* Image Container */}
           <div className='flex-1 relative group'>
-            <div className='absolute -inset-4 bg-(--brand-orange)/10 rounded-3xl -z-10 group-hover:bg-(--brand-orange)/20 transition-all ease-in-out duration-500' />
+            <div className='absolute -inset-4 bg-[#ff6333]/10 rounded-3xl -z-10 group-hover:bg-[#ff6333]/20 transition-all ease-in-out duration-500' />
             <Image
               src='https://www.banham.co.uk/media/wysiwyg/lock-repair-body.png'
               alt='Professional Lock Repair and Installation'
@@ -90,7 +90,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
           </div>
 
           {/* Content Container */}
-          <div className='flex-1 flex flex-col bg-white p-6 sm:p-8 lg:p-12 rounded-2xl shadow-sm border border-gray-100 justify-center group hover:border-(--brand-orange)/30 transition-all ease-in-out duration-500'>
+          <div className='flex-1 flex flex-col bg-white p-6 sm:p-8 lg:p-12 rounded-2xl shadow-sm border border-gray-100 justify-center group hover:border-[#ff6333]/30 transition-all ease-in-out duration-500'>
             <div className='space-y-6'>
               <div className='flex items-center gap-3'>
                 <span className='h-0.5 w-8 bg-(--brand-orange) rounded-full'></span>
@@ -136,7 +136,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
 
               <div className='pt-6'>
                 <Link href={`tel:${lead?.phone || ''}`}>
-                  <button className='cursor-pointer w-full sm:w-auto group inline-flex items-center justify-between sm:justify-start gap-4 bg-(--brand-orange) hover:bg-black text-white rounded-full pl-6 pr-1.5 py-1.5 text-sm font-bold tracking-wide transition-all ease-in-out duration-500 shadow-xl shadow-(--brand-orange)/20'>
+                  <button className='cursor-pointer w-full sm:w-auto group inline-flex items-center justify-between sm:justify-start gap-4 bg-(--brand-orange) hover:bg-black text-white rounded-full pl-6 pr-1.5 py-1.5 text-sm font-bold tracking-wide transition-all ease-in-out duration-500 shadow-xl shadow-[#ff6333]/20'>
                     REQUEST ASSISTANCE
                     <span className='w-10 h-10 rounded-full bg-white group-hover:bg-(--brand-orange) shrink-0 flex items-center justify-center transition-all ease-in-out duration-500'>
                       <Phone className='h-4 w-4 text-gray-900 group-hover:text-white group-hover:rotate-12 transition-all ease-in-out duration-500' />
@@ -186,12 +186,12 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
             ].map((step, idx) => (
               <div
                 key={idx}
-                className='bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 relative group hover:border-(--brand-orange)/50 hover:shadow-xl transition-all ease-in-out duration-500'
+                className='bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100 relative group hover:border-[#ff6333]/50 hover:shadow-xl transition-all ease-in-out duration-500'
               >
-                <div className='text-6xl font-black text-gray-100 group-hover:text-(--brand-orange)/10 transition-all ease-in-out duration-500 absolute top-4 right-6'>
+                <div className='text-6xl font-black text-gray-100 group-hover:text-[#ff6333]/10 transition-all ease-in-out duration-500 absolute top-4 right-6'>
                   {step.num}
                 </div>
-                <div className='w-12 h-12 rounded-full bg-(--brand-orange)/10 flex items-center justify-center text-(--brand-orange) font-bold mb-6 group-hover:bg-(--brand-orange) group-hover:text-white transition-all ease-in-out duration-500 relative z-10'>
+                <div className='w-12 h-12 rounded-full bg-[#ff6333]/10 flex items-center justify-center text-(--brand-orange) font-bold mb-6 group-hover:bg-(--brand-orange) group-hover:text-white transition-all ease-in-out duration-500 relative z-10'>
                   {idx + 1}
                 </div>
                 <h3 className='text-xl font-bold text-gray-900 mb-3 relative z-10'>{step.title}</h3>
@@ -335,7 +335,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
                   { title: 'Rapid Response', desc: 'We aim to be at your door within 30-45 minutes for emergencies.' },
                 ].map((benefit, i) => (
                   <div key={i}>
-                    <div className='w-10 h-10 rounded-full bg-(--brand-orange)/10 flex items-center justify-center text-(--brand-orange) mb-4'>
+                    <div className='w-10 h-10 rounded-full bg-[#ff6333]/10 flex items-center justify-center text-(--brand-orange) mb-4'>
                       <CheckCircle2 className='w-5 h-5' />
                     </div>
                     <h4 className='text-lg font-bold text-gray-900 mb-2'>{benefit.title}</h4>
@@ -465,7 +465,7 @@ export function ServicesIndex({ lead, services, industry, slug }: TemplateProps)
               className='bg-white border border-gray-200 p-8 rounded-2xl hover:border-(--brand-orange) hover:shadow-2xl transition-all ease-in-out duration-500 group flex flex-col justify-between'
             >
               <div>
-                <div className='w-12 h-12 rounded-xl bg-(--brand-orange)/10 flex items-center justify-center mb-6 group-hover:bg-(--brand-orange) transition-all ease-in-out duration-500'>
+                <div className='w-12 h-12 rounded-xl bg-[#ff6333]/10 flex items-center justify-center mb-6 group-hover:bg-(--brand-orange) transition-all ease-in-out duration-500'>
                   <ShieldCheck className='w-6 h-6 text-(--brand-orange) group-hover:text-white transition-all ease-in-out duration-500' />
                 </div>
                 <h2 className='text-2xl font-bold mb-4 text-gray-900 group-hover:text-(--brand-orange) transition-colors'>{s.title}</h2>
@@ -527,7 +527,7 @@ export function ServicesIndex({ lead, services, industry, slug }: TemplateProps)
             needs.
           </p>
           <Link href={`tel:${lead?.phone || ''}`}>
-            <button className='cursor-pointer bg-(--brand-orange) hover:bg-white text-white hover:text-black font-bold text-lg px-8 py-4 rounded-full transition-all ease-in-out duration-500 shadow-xl shadow-(--brand-orange)/20'>
+            <button className='cursor-pointer bg-(--brand-orange) hover:bg-white text-white hover:text-black font-bold text-lg px-8 py-4 rounded-full transition-all ease-in-out duration-500 shadow-xl shadow-[#ff6333]/20'>
               Contact Subject Matter Experts
             </button>
           </Link>
@@ -661,7 +661,7 @@ export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) 
                   Our dispatch team is standing by 24/7 to assign an engineer to your location.
                 </p>
                 <Link href={`tel:${lead?.phone || '07000000000'}`}>
-                  <button className='w-full cursor-pointer rounded-full bg-(--brand-orange) hover:bg-white text-white hover:text-black font-bold h-14 text-lg transition-all ease-in-out duration-500 relative z-10 shadow-xl shadow-(--brand-orange)/20'>
+                  <button className='w-full cursor-pointer rounded-full bg-(--brand-orange) hover:bg-white text-white hover:text-black font-bold h-14 text-lg transition-all ease-in-out duration-500 relative z-10 shadow-xl shadow-[#ff6333]/20'>
                     Call Now
                   </button>
                 </Link>
@@ -675,21 +675,21 @@ export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) 
                     <input
                       type='text'
                       placeholder='Full Name'
-                      className='w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-(--brand-orange) focus:ring-2 focus:ring-(--brand-orange)/20 outline-none transition-all'
+                      className='w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-(--brand-orange) focus:ring-2 focus:ring-[#ff6333]/20 outline-none transition-all'
                     />
                   </div>
                   <div>
                     <input
                       type='tel'
                       placeholder='Phone Number'
-                      className='w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-(--brand-orange) focus:ring-2 focus:ring-(--brand-orange)/20 outline-none transition-all'
+                      className='w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-(--brand-orange) focus:ring-2 focus:ring-[#ff6333]/20 outline-none transition-all'
                     />
                   </div>
                   <div>
                     <textarea
                       placeholder='How can we help?'
                       rows={3}
-                      className='w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-(--brand-orange) focus:ring-2 focus:ring-(--brand-orange)/20 outline-none transition-all resize-none'
+                      className='w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-(--brand-orange) focus:ring-2 focus:ring-[#ff6333]/20 outline-none transition-all resize-none'
                     ></textarea>
                   </div>
                   <button
