@@ -98,9 +98,16 @@ async function run() {
   console.log(`📊 Found ${rows.length} rows.`);
 
   let modifiedCount = 0;
-  const limit = process.argv[2] ? parseInt(process.argv[2], 10) : rows.length;
 
-  for (let i = 0; i < Math.min(rows.length, limit); i++) {
+  // CLI args: node page-speed.js [limit] [startRow]
+  // startRow is 1-indexed (sheet row number). Default = 1 (process everything).
+  const limit = process.argv[2] ? parseInt(process.argv[2], 10) : rows.length;
+  const startRow = process.argv[3] ? parseInt(process.argv[3], 10) : 1;
+  const startIndex = Math.max(0, startRow - 1); // convert to 0-based index
+
+  console.log(`▶️  Starting from row ${startRow} (index ${startIndex})`);
+
+  for (let i = startIndex; i < Math.min(rows.length, limit); i++) {
     const row = rows[i];
     
     // Skip empty rows
