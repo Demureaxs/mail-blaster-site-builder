@@ -33,14 +33,13 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
                 Local & Trusted Experts
               </div>
               <h1 className='text-white text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1]'>
-                Expert Locksmith <br />
+                Expert Locksmith {lead?.city ? lead.city : ''} <br />
                 <span className='text-(--brand-orange)'>
-                  {lead?.businessName
-                    ? lead.businessName
-                        .split(' ')
-                        .map((word) => word[0].toUpperCase() + word.slice(1))
-                        .join(' ')
-                    : 'Security'}
+                  {lead.businessName &&
+                    lead.businessName
+                      .split(' ')
+                      .map((word) => word[0].toUpperCase() + word.slice(1))
+                      .join(' ')}
                 </span>
               </h1>
 
@@ -100,7 +99,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
 
               <h2 className='text-3xl sm:text-4xl lg:text-5xl text-gray-900 font-bold leading-tight tracking-tight'>
                 Emergency Locksmith & <br className='hidden sm:block' />
-                <span className='text-transparent bg-clip-text bg-linear-to-r from-gray-900 to-gray-500'>Security Solutions</span>
+                <span className='text-transparent bg-clip-text bg-linear-to-r from-gray-900 to-gray-500'>Security Solutions in {lead?.city}</span>
               </h2>
 
               <div className='space-y-4 text-gray-600 text-base sm:text-lg leading-relaxed'>
@@ -211,7 +210,9 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
               <span className='h-0.5 w-8 bg-(--brand-orange) rounded-full'></span>
               <span className='text-(--brand-orange) font-bold tracking-widest uppercase text-sm'>What We Do</span>
             </div>
-            <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight'>Discover Our Professional Services</h2>
+            <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight'>
+              Discover Our Locksmith Services in {lead?.city}
+            </h2>
           </div>
           <Link
             href={`/${industry}/${slug}/services`}
@@ -306,6 +307,26 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
               </div>
             </Link>
           ))}
+        </div>
+      </section>
+
+       {/* ── 4. Trusted Brands Strip ────────────────────────────────── */}
+      <section className='bg-(--dark-bg) py-16'>
+        <div className='max-w-7xl mx-auto px-4 md:px-6'>
+          <p className='text-center text-xs font-bold uppercase tracking-widest text-gray-500 mb-8'>Approved Installers &amp; Suppliers Of</p>
+          <div className='flex flex-wrap items-center justify-center gap-8 md:gap-16'>
+            {[
+              { src: '/brand-era.png', alt: 'ERA Locks' },
+              { src: '/brand-legge.png', alt: 'Legge Locks' },
+              { src: '/brand-union.png', alt: 'Union Locks' },
+              { src: '/brand-chubb.png', alt: 'Chubb Locks' },
+              { src: '/brand-yale.png', alt: 'Yale Locks' },
+            ].map((brand) => (
+              <div key={brand.alt} className='opacity-100 hover:opacity-50 transition-opacity duration-300 grayscale-0 hover:grayscale'>
+                <Image src={brand.src} alt={brand.alt} width={160} height={60} className='h-16 w-auto object-contain' />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -450,7 +471,9 @@ export function ServicesIndex({ lead, services, industry, slug }: TemplateProps)
         />
         <div className='absolute inset-0 bg-black/75 z-10' />
         <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-end pb-8 sm:pb-12 px-4 md:px-6'>
-          <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>Comprehensive Security Solutions</h1>
+          <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>
+            Comprehensive Locksmith Solutions in {lead?.city}
+          </h1>
           <p className='text-gray-300 mt-4 text-base sm:text-lg md:text-xl max-w-2xl border-l-2 border-(--brand-orange) pl-4'>
             From emergency lockouts to enterprise-grade access control, our certified specialists are equipped to handle any situation with speed and
             precision.
@@ -561,7 +584,9 @@ export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) 
             &larr; Back to Services
           </Link>
           <div className='max-w-3xl'>
-            <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>{service.title}</h1>
+            <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>
+              {service.title} in {lead?.city}
+            </h1>
             <p className='text-gray-300 mt-4 text-base sm:text-lg md:text-xl border-l-2 border-(--brand-orange) pl-4'>{service.summary}</p>
           </div>
         </div>
@@ -724,7 +749,7 @@ export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) 
   );
 }
 
-export function BlogIndex({ posts, industry, slug }: TemplateProps) {
+export function BlogIndex({ lead, posts, industry, slug }: TemplateProps) {
   return (
     <div className='bg-gray-50 flex-1 w-full'>
       {/* Short Hero */}
@@ -738,7 +763,7 @@ export function BlogIndex({ posts, industry, slug }: TemplateProps) {
         />
         <div className='absolute inset-0 bg-black/75 z-10' />
         <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-end pb-8 sm:pb-12 px-4 md:px-6'>
-          <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>Security Advice & News</h1>
+          <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>Security Advice & News in {lead?.city}</h1>
           <p className='text-gray-300 mt-4 text-base sm:text-lg md:text-xl max-w-2xl border-l-2 border-(--brand-orange) pl-4'>
             Expert tips, updates, and guides to keep your property safe.
           </p>

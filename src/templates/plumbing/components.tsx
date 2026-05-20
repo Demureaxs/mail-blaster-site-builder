@@ -35,18 +35,17 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
               <h1 className='text-white text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1]'>
                 Expert Plumber <br />
                 <span className='text-(--brand-orange)'>
-                  {lead?.businessName
-                    ? lead.businessName
-                        .split(' ')
-                        .map((word) => word[0].toUpperCase() + word.slice(1))
-                        .join(' ')
-                    : 'Plumbing'}
+                  {lead.businessName &&
+                    lead.businessName
+                      .split(' ')
+                      .map((word) => word[0].toUpperCase() + word.slice(1))
+                      .join(' ')}
                 </span>
               </h1>
 
               <p className='mt-6 sm:mt-8 text-gray-300 text-base sm:text-lg md:text-xl lg:w-3/4 border-l-2 border-(--brand-orange) pl-4 sm:pl-6 py-1 leading-relaxed shadow-sm'>
-                Burst pipe? Blocked drain? Need a plumbing upgrade? We deliver rapid emergency responses and professional plumbing repairs across the region. Available
-                24/7 for all your residential and commercial plumbing needs.
+                Burst pipe? Blocked drain? Need a plumbing upgrade? We deliver rapid emergency responses and professional plumbing repairs across the
+                region. Available 24/7 for all your residential and commercial plumbing needs.
               </p>
 
               <div className='mt-8 sm:mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4'>
@@ -109,8 +108,8 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
                   emergencies and water leaks don&apos;t wait for business hours. We provide swift, professional responses right when you need us.
                 </p>
                 <p>
-                  With years of specialized experience in <strong className='text-gray-900'>leak detection</strong>, advanced pipe installations,
-                  and high-pressure unblocking, we ensure that both residential and commercial properties remain safe from water damage.
+                  With years of specialized experience in <strong className='text-gray-900'>leak detection</strong>, advanced pipe installations, and
+                  high-pressure unblocking, we ensure that both residential and commercial properties remain safe from water damage.
                 </p>
               </div>
 
@@ -160,8 +159,8 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
             </div>
             <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 tracking-tight'>Our Simple 4-Step Process</h2>
             <p className='text-base sm:text-lg text-gray-500 max-w-2xl mx-auto'>
-              Experiencing a severe leak or needing a boiler repair is stressful enough. We make getting the right expert to your door simple, fast, and completely
-              transparent.
+              Experiencing a severe leak or needing a boiler repair is stressful enough. We make getting the right expert to your door simple, fast,
+              and completely transparent.
             </p>
           </div>
 
@@ -232,7 +231,8 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
               </div>
               <h3 className='text-2xl sm:text-3xl lg:text-4xl font-bold mb-4'>Emergency 24/7 Plumbing</h3>
               <p className='text-gray-400 text-base sm:text-lg max-w-md mb-8 sm:mb-10 leading-relaxed'>
-                Burst pipes or severe leaks? Our rapid-response team is on standby 24 hours a day to provide emergency plumbing repairs and prevent water damage to your property.
+                Burst pipes or severe leaks? Our rapid-response team is on standby 24 hours a day to provide emergency plumbing repairs and prevent
+                water damage to your property.
               </p>
               <Link href={`tel:${lead?.phone || ''}`} className='block sm:inline-block'>
                 <button className='cursor-pointer w-full sm:w-auto bg-(--brand-orange) hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-8 rounded-full transition-all ease-in-out duration-500'>
@@ -522,8 +522,8 @@ export function ServicesIndex({ lead, services, industry, slug }: TemplateProps)
         <div className='max-w-4xl mx-auto text-center'>
           <h2 className='text-3xl md:text-4xl font-bold text-white mb-8'>Require Custom Plumbing Solutions?</h2>
           <p className='text-gray-400 text-lg mb-10 max-w-2xl mx-auto'>
-            If you manage a commercial property or require specialized commercial plumbing systems, our engineers can design a bespoke solution for your
-            needs.
+            If you manage a commercial property or require specialized commercial plumbing systems, our engineers can design a bespoke solution for
+            your needs.
           </p>
           <Link href={`tel:${lead?.phone || ''}`}>
             <button className='cursor-pointer bg-(--brand-orange) hover:bg-white text-white hover:text-black font-bold text-lg px-8 py-4 rounded-full transition-all ease-in-out duration-500 shadow-xl shadow-[#ff6333]/20'>
@@ -804,8 +804,8 @@ export function BlogPost({ post, industry, slug }: TemplateProps) {
               <p className='text-xl leading-relaxed text-gray-800 font-medium'>{post.excerpt}</p>
               <hr className='my-8' />
               <p>
-                Maintaining the plumbing of your property is an ongoing responsibility. When evaluating your home or business, it pays to
-                consider the quality of your pipes and the surrounding hardware.
+                Maintaining the plumbing of your property is an ongoing responsibility. When evaluating your home or business, it pays to consider the
+                quality of your pipes and the surrounding hardware.
               </p>
               <p>
                 A high-quality pipe installed by a professional can often be the single difference in preventing catastrophic water damage. We always

@@ -14,17 +14,17 @@ export function BaseShell({ children, lead, industry, slug }: BaseShellProps) {
   return (
     <div className='flex min-h-screen bg-gray-50 flex-col relative'>
       {/* ── Purchase Demo Banner ─────────────────────────────────── */}
-      {/* <div className='bg-black text-white h-11 flex items-center justify-center px-4 relative z-100 border-b border-gray-800'>
+      <div className='bg-black text-white h-11 flex items-center justify-center px-4 relative z-100 border-b border-gray-800'>
         <div className='flex items-center gap-3 sm:gap-4 text-sm'>
           <span className='font-medium hidden md:inline'>This is a live preview of your new website.</span>
           <span className='font-bold text-(--brand-orange)'>Ready to launch?</span>
-          <Link href={process.env.STRIPE_PAYMENT_LINK || '#'}>
+          <Link href={'https://buy.stripe.com/3cI9ATd3g18B1bE0io3Nm06'} target='_blank'>
             <button className='cursor-pointer bg-(--brand-orange) hover:bg-white text-white hover:text-black px-5 py-1 rounded-full text-xs font-bold transition-all ease-in-out duration-500 shadow-lg shadow-[#ff6333]/20'>
               Claim This Website
             </button>
           </Link>
         </div>
-      </div> */}
+      </div>
       {/* ── Scrolling Promo Banner ─────────────────────────────────── */}
       <div className='bg-(--dark-bg) text-white py-2.5 overflow-hidden'>
         <div className='flex animate-marquee whitespace-nowrap'>
@@ -58,8 +58,8 @@ export function BaseShell({ children, lead, industry, slug }: BaseShellProps) {
       </div>
 
       {/* ── Default Header / Navigation (Absolute top underneath the banner) */}
-      <div className='absolute top-21 left-0 w-full z-50 pt-6 sm:pt-10 pb-6 pointer-events-none'>
-        <header className='container mx-auto max-w-7xl flex h-16 items-center justify-between px-4 md:px-6 pointer-events-auto'>
+      <div className='absolute top-22 left-0 w-full z-50 pt-6 sm:px-6 sm:pt-10 pb-6 pointer-events-none'>
+        <header className='container mx-auto max-w-7xl flex h-16 pr-6 items-center justify-between px-4 md:px-6 pointer-events-auto'>
           <div className='flex-1 flex items-center justify-between gap-4 pr-8'>
             {/* Logo */}
             <Link
@@ -106,9 +106,9 @@ export function BaseShell({ children, lead, industry, slug }: BaseShellProps) {
           </div>
 
           {/* CTA Button */}
-          <div className='flex hidden md:block items-center gap-3'>
+          <div className='flex items-center gap-3'>
             <Link href={`tel:${lead?.phone || ''}`}>
-              <button className='cursor-pointer group inline-flex items-center gap-3 bg-white border border-transparent hover:border-white rounded-full pl-5 pr-1.5 py-1.5 text-sm font-bold text-gray-900 transition-all ease-in-out duration-500 shadow-xl'>
+              <button className='cursor-pointer whitespace-nowrap group inline-flex items-center gap-3 bg-white border border-transparent hover:border-white rounded-full pl-5 pr-1.5 py-1.5 text-sm font-bold text-gray-900 transition-all ease-in-out duration-500 shadow-xl'>
                 CONTACT US
                 <span className='w-8 h-8 rounded-full bg-(--brand-orange) group-hover:bg-black flex items-center justify-center transition-all ease-in-out duration-500'>
                   <Phone className='h-4 w-4 text-white group-hover:rotate-12 transition-all ease-in-out duration-500' />
@@ -217,6 +217,23 @@ export function BaseShell({ children, lead, industry, slug }: BaseShellProps) {
           </div>
         </div>
       </footer>
+
+      {/* ── Fixed WhatsApp Button ──────────────────────────────────── */}
+      <a
+        href={`https://wa.me/${lead?.phone && lead?.phone.replace(/\s/g, '')}`}
+        target='_blank'
+        rel='noopener noreferrer'
+        aria-label='Chat with us on WhatsApp'
+        className='fixed bottom-10 right-10 z-50 hover:scale-110 transition-transform ease-in-out duration-300 drop-shadow-xl'
+      >
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' className='w-14 h-14' aria-hidden='true'>
+          <circle cx='24' cy='24' r='24' fill='#25D166' />
+          <path
+            fill='#fff'
+            d='M35.2 12.8A15.9 15.9 0 0 0 24 8C15.16 8 8 15.16 8 24c0 2.82.74 5.57 2.15 7.99L8 40l8.23-2.16A15.94 15.94 0 0 0 24 40c8.84 0 16-7.16 16-16 0-4.27-1.66-8.29-4.8-11.2zm-11.2 24.6a13.23 13.23 0 0 1-6.74-1.84l-.48-.29-4.99 1.31 1.33-4.86-.31-.5A13.22 13.22 0 0 1 10.77 24c0-7.29 5.94-13.23 13.23-13.23 3.54 0 6.86 1.38 9.36 3.88a13.16 13.16 0 0 1 3.87 9.36c0 7.3-5.94 13.39-13.23 13.39zm7.26-9.9c-.4-.2-2.35-1.16-2.71-1.29-.37-.13-.63-.2-.9.2-.26.39-1.02 1.29-1.25 1.55-.23.27-.46.3-.85.1-.4-.2-1.67-.62-3.18-1.96-1.18-1.05-1.97-2.34-2.2-2.74-.23-.4-.02-.61.17-.81.18-.18.4-.46.6-.69.2-.23.26-.4.4-.66.13-.27.07-.5-.03-.7-.1-.2-.9-2.16-1.23-2.96-.32-.78-.65-.67-.9-.68h-.76c-.27 0-.7.1-1.06.5-.37.4-1.4 1.37-1.4 3.33 0 1.97 1.43 3.87 1.63 4.14.2.27 2.82 4.3 6.83 6.03.95.41 1.7.66 2.28.84.96.3 1.83.26 2.52.16.77-.12 2.35-.96 2.68-1.89.33-.92.33-1.71.23-1.88-.1-.17-.36-.27-.76-.47z'
+          />
+        </svg>
+      </a>
     </div>
   );
 }
