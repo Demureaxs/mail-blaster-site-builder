@@ -30,8 +30,11 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const Template = getTemplate(industry);
 
-  // Try KV first, then default
+  // Try KV first, then default from template, then markdown fallback
   let post = await getPost(industry, slug, postSlug);
+  if (!post && Template.defaultPosts) {
+    post = Template.defaultPosts.find((p) => p.postSlug === postSlug) || null;
+  }
   if (!post) {
     post = getPostBySlug(postSlug);
   }

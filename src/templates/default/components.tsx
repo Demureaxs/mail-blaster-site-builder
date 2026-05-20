@@ -1,5 +1,6 @@
 import remarkGfm from 'remark-gfm';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import Link from 'next/link';
 import { TemplateProps } from '../types';
 import { Container } from '@/components/ui/Container';
@@ -797,7 +798,9 @@ export function BlogPost({ post, industry, slug }: TemplateProps) {
         </Link>
         <article className='prose prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-a:text-(--brand-orange)'>
           {post.htmlContent ? (
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.htmlContent}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+              {post.htmlContent.replace(/\[industry\]/g, industry).replace(/\[slug\]/g, slug)}
+            </ReactMarkdown>
           ) : (
             <>
               <p className='text-xl leading-relaxed text-gray-800 font-medium'>{post.excerpt}</p>

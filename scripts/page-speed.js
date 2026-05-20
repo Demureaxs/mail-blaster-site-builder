@@ -7,7 +7,8 @@ require('dotenv').config({ path: path.join(process.cwd(), '.env.local') });
 require('dotenv').config({ path: path.join(process.cwd(), '.env') });
 
 // Ensure we are running from project root
-const filePath = path.join(process.cwd(), 'public', 'Locksmiths UK.xlsx');
+const defaultFilePath = path.join(process.cwd(), 'public', 'Locksmiths UK.xlsx');
+const filePath = process.env.FILE_PATH ? path.resolve(process.cwd(), process.env.FILE_PATH) : defaultFilePath;
 
 if (!fs.existsSync(filePath)) {
   console.error(`❌ XLSX file not found at ${filePath}`);
@@ -15,7 +16,7 @@ if (!fs.existsSync(filePath)) {
 }
 
 // Configuration
-const BASE_NEW_SITE_URL = 'https://preview.teklytic.com/locksmiths/';
+const BASE_NEW_SITE_URL = process.env.BASE_URL || 'https://preview.teklytic.com/locksmiths/';
 const BATCH_SAVE_INTERVAL = 10; // Save every N rows
 const API_DELAY_MS = 2500; // Delay between API calls to avoid rate limit (ms)
 

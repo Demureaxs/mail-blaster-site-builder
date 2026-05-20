@@ -28,7 +28,7 @@ export default async function BlogPage({ params }: PageProps) {
   }
 
   const Template = getTemplate(industry);
-  const posts = (await getBlogIndex(industry, slug)) || getAllPosts();
+  const posts = (await getBlogIndex(industry, slug)) || Template.defaultPosts || getAllPosts();
 
   const { BlogIndex } = Template.Components;
 

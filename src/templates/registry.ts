@@ -6,6 +6,7 @@ import { HvacTemplate } from "./hvac";
 const templates: Record<string, TemplateModule> = {
   default: DefaultTemplate,
   plumbing: PlumbingTemplate,
+  plumbers: PlumbingTemplate,
   hvac: HvacTemplate,
   locksmiths: DefaultTemplate,
 };

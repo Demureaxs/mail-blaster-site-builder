@@ -29,23 +29,33 @@ function toSlug(name: string): string {
 }
 
 // ── In-memory cache ──────────────────────────────────────────────────
-let cachedLeads: Map<string, LeadConfig> | null = null;
+const cachedLeadsByIndustry = new Map<string, Map<string, LeadConfig>>();
 
-function getXlsxPath(): string {
+function getXlsxPath(industry: string): string {
+  const fileMap: Record<string, string> = {
+    locksmiths: 'Locksmiths UK.xlsx',
+    plumbers: 'plumbers_uk.xlsx',
+  };
+  const fileName = fileMap[industry.toLowerCase()] || 'Locksmiths UK.xlsx';
   // Works both in dev (process.cwd()) and prod
-  return path.join(process.cwd(), 'public', 'Locksmiths UK.xlsx');
+  return path.join(process.cwd(), 'public', fileName);
 }
 
-function loadLeads(): Map<string, LeadConfig> {
+function loadLeads(industry: string): Map<string, LeadConfig> {
+  const normalizedIndustry = industry.toLowerCase();
+  
   // Only use in-memory cache in production. During development,
   // re-reading the XLSX file allows live content updates.
-  if (process.env.NODE_ENV !== 'development' && cachedLeads) return cachedLeads;
+  if (process.env.NODE_ENV !== 'development' && cachedLeadsByIndustry.has(normalizedIndustry)) {
+    return cachedLeadsByIndustry.get(normalizedIndustry)!;
+  }
 
-  const filePath = getXlsxPath();
+  const filePath = getXlsxPath(normalizedIndustry);
   if (!fs.existsSync(filePath)) {
     console.error(`XLSX file not found at ${filePath}`);
-    cachedLeads = new Map();
-    return cachedLeads;
+    const emptyMap = new Map<string, LeadConfig>();
+    cachedLeadsByIndustry.set(normalizedIndustry, emptyMap);
+    return emptyMap;
   }
 
   const fileBuffer = fs.readFileSync(filePath);
@@ -78,7 +88,7 @@ function loadLeads(): Map<string, LeadConfig> {
 
     const lead: LeadConfig = {
       businessName,
-      industry: 'locksmiths',
+      industry: normalizedIndustry,
       slug: finalSlug,
       address: row[1] ? String(row[1]).trim() : undefined,
       phone: row[3] ? String(row[3]).trim() : undefined,
@@ -89,20 +99,20 @@ function loadLeads(): Map<string, LeadConfig> {
     map.set(finalSlug, lead);
   }
 
-  console.log(`📊 Loaded ${map.size} leads from XLSX`);
-  cachedLeads = map;
+  console.log(`📊 Loaded ${map.size} leads from XLSX for ${normalizedIndustry}`);
+  cachedLeadsByIndustry.set(normalizedIndustry, map);
   return map;
 }
 
 // Force reload (useful after slug script runs)
 export function invalidateCache(): void {
-  cachedLeads = null;
+  cachedLeadsByIndustry.clear();
 }
 
 // ── Public API (same signatures as kv.ts) ────────────────────────────
 
 export async function getLead(industry: string, slug: string): Promise<LeadConfig | null> {
-  const leads = loadLeads();
+  const leads = loadLeads(industry);
   return leads.get(slug) || null;
 }
 
@@ -124,7 +134,7 @@ export async function getPost(industry: string, slug: string, postSlug: string):
 }
 
 // ── Listing helper (useful for debugging / future index page) ────────
-export function getAllLeads(): LeadConfig[] {
-  const leads = loadLeads();
+export function getAllLeads(industry: string = 'locksmiths'): LeadConfig[] {
+  const leads = loadLeads(industry);
   return Array.from(leads.values());
 }

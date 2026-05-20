@@ -6,7 +6,8 @@
 import * as XLSX from "xlsx";
 import * as path from "path";
 
-const XLSX_PATH = path.join(process.cwd(), "public", "Locksmiths UK.xlsx");
+const defaultPath = path.join(process.cwd(), "public", "Locksmiths UK.xlsx");
+const XLSX_PATH = process.env.FILE_PATH ? path.resolve(process.cwd(), process.env.FILE_PATH) : defaultPath;
 
 function toSlug(name: string): string {
   return name
