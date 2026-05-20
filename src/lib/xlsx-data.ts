@@ -121,7 +121,7 @@ function loadLeads(industry: string): Map<string, LeadConfig> {
       industry: normalizedIndustry,
       slug: finalSlug,
       address: addressStr,
-      city: extractCityFromAddress(addressStr) || (row[10] ? String(row[10]).trim() : undefined),
+      city: extractCityFromAddress(addressStr),
       phone: row[3] ? String(row[3]).trim() : undefined,
       email: row[4] ? String(row[4]).trim() : undefined,
       website: row[2] ? String(row[2]).trim() : undefined,

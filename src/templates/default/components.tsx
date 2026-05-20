@@ -33,7 +33,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
                 Local & Trusted Experts
               </div>
               <h1 className='text-white text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1]'>
-                Expert Locksmith {lead?.city ? lead.city : ''} <br />
+                Expert Locksmith{lead?.city ? ` in ${lead.city}` : ''} <br />
                 <span className='text-(--brand-orange)'>
                   {lead.businessName &&
                     lead.businessName
@@ -99,7 +99,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
 
               <h2 className='text-3xl sm:text-4xl lg:text-5xl text-gray-900 font-bold leading-tight tracking-tight'>
                 Emergency Locksmith & <br className='hidden sm:block' />
-                <span className='text-transparent bg-clip-text bg-linear-to-r from-gray-900 to-gray-500'>Security Solutions in {lead?.city}</span>
+                <span className='text-transparent bg-clip-text bg-linear-to-r from-gray-900 to-gray-500'>Security Solutions{lead?.city ? ` in ${lead.city}` : ''}</span>
               </h2>
 
               <div className='space-y-4 text-gray-600 text-base sm:text-lg leading-relaxed'>
@@ -211,7 +211,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
               <span className='text-(--brand-orange) font-bold tracking-widest uppercase text-sm'>What We Do</span>
             </div>
             <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight'>
-              Discover Our Locksmith Services in {lead?.city}
+              Discover Our Locksmith Services{lead?.city ? ` in ${lead.city}` : ''}
             </h2>
           </div>
           <Link
@@ -472,7 +472,7 @@ export function ServicesIndex({ lead, services, industry, slug }: TemplateProps)
         <div className='absolute inset-0 bg-black/75 z-10' />
         <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-end pb-8 sm:pb-12 px-4 md:px-6'>
           <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>
-            Comprehensive Locksmith Solutions in {lead?.city}
+            Comprehensive Locksmith Solutions{lead?.city ? ` in ${lead.city}` : ''}
           </h1>
           <p className='text-gray-300 mt-4 text-base sm:text-lg md:text-xl max-w-2xl border-l-2 border-(--brand-orange) pl-4'>
             From emergency lockouts to enterprise-grade access control, our certified specialists are equipped to handle any situation with speed and
@@ -585,7 +585,7 @@ export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) 
           </Link>
           <div className='max-w-3xl'>
             <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>
-              {service.title} in {lead?.city}
+              {service.title}{lead?.city ? ` in ${lead.city}` : ''}
             </h1>
             <p className='text-gray-300 mt-4 text-base sm:text-lg md:text-xl border-l-2 border-(--brand-orange) pl-4'>{service.summary}</p>
           </div>
@@ -599,7 +599,13 @@ export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) 
             {/* HTML Body */}
             <div className='prose prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-a:text-(--brand-orange) prose-strong:text-gray-900 prose-li:marker:text-[--brand-orange]'>
               {service.htmlContent ? (
-                <div dangerouslySetInnerHTML={{ __html: service.htmlContent.replace(/href="\/services\/([^"]+)"/g, `href="/${industry}/${slug}/services/$1"`).replace(/href="tel:[^"]*"/g, `href="tel:${lead?.phone?.replace(/\\s+/g, '') || ''}"`) }} />
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: service.htmlContent
+                      .replace(/href="\/services\/([^"]+)"/g, `href="/${industry}/${slug}/services/$1"`)
+                      .replace(/href="tel:[^"]*"/g, `href="tel:${lead?.phone?.replace(/\\s+/g, '') || ''}"`),
+                  }}
+                />
               ) : (
                 <>
                   <p className='text-xl leading-relaxed text-gray-700 font-medium mb-8 pb-8 border-b border-gray-200'>{service.summary}</p>
@@ -763,7 +769,7 @@ export function BlogIndex({ lead, posts, industry, slug }: TemplateProps) {
         />
         <div className='absolute inset-0 bg-black/75 z-10' />
         <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-end pb-8 sm:pb-12 px-4 md:px-6'>
-          <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>Security Advice & News in {lead?.city}</h1>
+          <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>Security Advice & News{lead?.city ? ` in ${lead.city}` : ''}</h1>
           <p className='text-gray-300 mt-4 text-base sm:text-lg md:text-xl max-w-2xl border-l-2 border-(--brand-orange) pl-4'>
             Expert tips, updates, and guides to keep your property safe.
           </p>
@@ -824,7 +830,11 @@ export function BlogPost({ post, lead, industry, slug }: TemplateProps) {
         <article className='prose prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-a:text-(--brand-orange)'>
           {post.htmlContent ? (
             <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-              {post.htmlContent.replace(/\[industry\]/g, industry).replace(/\[slug\]/g, slug).replace(/href="\/services\/([^"]+)"/g, `href="/${industry}/${slug}/services/$1"`).replace(/href="tel:[^"]*"/g, `href="tel:${lead?.phone?.replace(/\\s+/g, '') || ''}"`)}
+              {post.htmlContent
+                .replace(/\[industry\]/g, industry)
+                .replace(/\[slug\]/g, slug)
+                .replace(/href="\/services\/([^"]+)"/g, `href="/${industry}/${slug}/services/$1"`)
+                .replace(/href="tel:[^"]*"/g, `href="tel:${lead?.phone?.replace(/\\s+/g, '') || ''}"`)}
             </ReactMarkdown>
           ) : (
             <>
