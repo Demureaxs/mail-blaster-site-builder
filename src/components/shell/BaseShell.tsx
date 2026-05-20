@@ -123,7 +123,7 @@ export function BaseShell({ children, lead, industry, slug }: BaseShellProps) {
       <main className='flex-1 flex flex-col pt-0'>{children}</main>
 
       {/* ── Footer ─────────────────────────────────────────────────── */}
-      <footer className='bg-(--dark-bg) mb-26 md:mb-6 text-white mx-4 mb-4 rounded-3xl overflow-hidden mt-10'>
+      <footer className='bg-(--dark-bg) mb-22 md:mb-6 text-white mx-4 mb-4 rounded-3xl overflow-hidden mt-10'>
         {/* Top CTA */}
         <div className='container mx-auto max-w-7xl px-4 md:px-10 py-20'>
           <div className='grid md:grid-cols-2 gap-16 items-start'>

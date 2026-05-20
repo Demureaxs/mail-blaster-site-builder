@@ -29,6 +29,34 @@ function toSlug(name: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
+function extractCityFromAddress(address: string | undefined): string | undefined {
+  if (!address) return undefined;
+  
+  const parts = address.split(',').map(p => p.trim());
+  const postcodeRegex = /([A-Z]{1,2}\d[A-Z\d]?\s+\d[A-Z]{2})/i;
+  
+  for (let i = parts.length - 1; i >= 0; i--) {
+    const part = parts[i];
+    const match = part.match(postcodeRegex);
+    if (match) {
+      let city = part.replace(postcodeRegex, '').replace(/Inggris Raya/gi, '').replace(/United Kingdom/gi, '').trim();
+      if (city) {
+        return city;
+      } else if (i > 0) {
+        return parts[i - 1];
+      }
+    }
+  }
+  
+  if (parts.length >= 2 && (parts[parts.length - 1].toLowerCase() === 'inggris raya' || parts[parts.length - 1].toLowerCase() === 'united kingdom')) {
+    let p = parts[parts.length - 2];
+    p = p.replace(/(?:\s*[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}\s*)/gi, '');
+    return p.trim();
+  }
+  
+  return undefined;
+}
+
 // ── In-memory cache ──────────────────────────────────────────────────
 const cachedLeadsByIndustry = new Map<string, Map<string, LeadConfig>>();
 
@@ -87,12 +115,13 @@ function loadLeads(industry: string): Map<string, LeadConfig> {
     const existingSlug = row[9] ? String(row[9]).trim() : '';
     const finalSlug = existingSlug || slug;
 
+    const addressStr = row[1] ? String(row[1]).trim() : undefined;
     const lead: LeadConfig = {
       businessName,
       industry: normalizedIndustry,
       slug: finalSlug,
-      address: row[1] ? String(row[1]).trim() : undefined,
-      city: row[10] ? String(row[10]).trim() : undefined,
+      address: addressStr,
+      city: extractCityFromAddress(addressStr) || (row[10] ? String(row[10]).trim() : undefined),
       phone: row[3] ? String(row[3]).trim() : undefined,
       email: row[4] ? String(row[4]).trim() : undefined,
       website: row[2] ? String(row[2]).trim() : undefined,

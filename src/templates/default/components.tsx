@@ -310,7 +310,7 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
         </div>
       </section>
 
-       {/* ── 4. Trusted Brands Strip ────────────────────────────────── */}
+      {/* ── 4. Trusted Brands Strip ────────────────────────────────── */}
       <section className='bg-(--dark-bg) py-16'>
         <div className='max-w-7xl mx-auto px-4 md:px-6'>
           <p className='text-center text-xs font-bold uppercase tracking-widest text-gray-500 mb-8'>Approved Installers &amp; Suppliers Of</p>
@@ -481,7 +481,7 @@ export function ServicesIndex({ lead, services, industry, slug }: TemplateProps)
         </div>
       </div>
 
-      <Container className='py-24 -mt-16'>
+      <Container className='py-24 -mt-26'>
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {services?.map((s) => (
             <div
@@ -592,14 +592,14 @@ export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) 
         </div>
       </div>
 
-      <Container className='py-20 -mt-32'>
+      <Container className='py-20 -mt-26'>
         <div className='grid lg:grid-cols-3 gap-12 lg:gap-16'>
           {/* Main Content Column */}
           <div className='lg:col-span-2'>
             {/* HTML Body */}
             <div className='prose prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-a:text-(--brand-orange) prose-strong:text-gray-900 prose-li:marker:text-[--brand-orange]'>
               {service.htmlContent ? (
-                <div dangerouslySetInnerHTML={{ __html: service.htmlContent }} />
+                <div dangerouslySetInnerHTML={{ __html: service.htmlContent.replace(/href="\/services\/([^"]+)"/g, `href="/${industry}/${slug}/services/$1"`).replace(/href="tel:[^"]*"/g, `href="tel:${lead?.phone?.replace(/\\s+/g, '') || ''}"`) }} />
               ) : (
                 <>
                   <p className='text-xl leading-relaxed text-gray-700 font-medium mb-8 pb-8 border-b border-gray-200'>{service.summary}</p>
@@ -791,7 +791,7 @@ export function BlogIndex({ lead, posts, industry, slug }: TemplateProps) {
   );
 }
 
-export function BlogPost({ post, industry, slug }: TemplateProps) {
+export function BlogPost({ post, lead, industry, slug }: TemplateProps) {
   if (!post) return <div>Post not found</div>;
 
   return (
@@ -824,7 +824,7 @@ export function BlogPost({ post, industry, slug }: TemplateProps) {
         <article className='prose prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-a:text-(--brand-orange)'>
           {post.htmlContent ? (
             <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-              {post.htmlContent.replace(/\[industry\]/g, industry).replace(/\[slug\]/g, slug)}
+              {post.htmlContent.replace(/\[industry\]/g, industry).replace(/\[slug\]/g, slug).replace(/href="\/services\/([^"]+)"/g, `href="/${industry}/${slug}/services/$1"`).replace(/href="tel:[^"]*"/g, `href="tel:${lead?.phone?.replace(/\\s+/g, '') || ''}"`)}
             </ReactMarkdown>
           ) : (
             <>
