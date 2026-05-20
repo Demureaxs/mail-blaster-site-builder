@@ -40,7 +40,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <BaseShell lead={lead} industry={industry} slug={slug} ctaLink={process.env.STRIPE_PAYMENT_LINK}>
-      <DemoHome lead={lead} industry={industry} slug={slug} stripePaymentLink={process.env.STRIPE_PAYMENT_LINK} />
+      <DemoHome lead={lead} industry={industry} slug={slug} services={Template.defaultServices} stripePaymentLink={process.env.STRIPE_PAYMENT_LINK} />
     </BaseShell>
   );
 }

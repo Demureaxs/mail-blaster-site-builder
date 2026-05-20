@@ -7,7 +7,7 @@ import { Container } from '@/components/ui/Container';
 import Image from 'next/image';
 import { Phone, Siren, Award, Clock, ShieldCheck, Key, CheckCircle2, Star, Wrench, Home, Car, Shield, CheckCircle } from 'lucide-react';
 
-export function DemoHome({ lead, industry, slug }: TemplateProps) {
+export function DemoHome({ lead, services, industry, slug }: TemplateProps) {
   return (
     <div className='space-y-16 lg:space-y-32'>
       {/* ── 1. Hero Section ───────────────────────────────────────────── */}
@@ -99,7 +99,9 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
 
               <h2 className='text-3xl sm:text-4xl lg:text-5xl text-gray-900 font-bold leading-tight tracking-tight'>
                 Emergency Locksmith & <br className='hidden sm:block' />
-                <span className='text-transparent bg-clip-text bg-linear-to-r from-gray-900 to-gray-500'>Security Solutions{lead?.city ? ` in ${lead.city}` : ''}</span>
+                <span className='text-transparent bg-clip-text bg-linear-to-r from-gray-900 to-gray-500'>
+                  Security Solutions{lead?.city ? ` in ${lead.city}` : ''}
+                </span>
               </h2>
 
               <div className='space-y-4 text-gray-600 text-base sm:text-lg leading-relaxed'>
@@ -224,89 +226,49 @@ export function DemoHome({ lead, industry, slug }: TemplateProps) {
 
         <div className='grid md:grid-cols-3 gap-6'>
           {/* Main big service card */}
-          <div className='md:col-span-2 bg-(--dark-bg) rounded-2xl p-6 sm:p-8 lg:p-12 text-white relative overflow-hidden group'>
-            <div className='absolute right-0 bottom-0 opacity-10 group-hover:scale-110 transition-all ease-in-out duration-500 pointer-events-none'>
-              <Key className='w-48 h-48 sm:w-64 sm:h-64 translate-x-12 translate-y-12 sm:translate-x-0 sm:translate-y-0' strokeWidth={1} />
-            </div>
-            <div className='relative z-10'>
-              <div className='inline-flex px-3 py-1 bg-white/10 text-white rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 backdrop-blur-md'>
-                Priority Service
+          {services && services.length > 0 && (
+            <div className='md:col-span-2 bg-(--dark-bg) rounded-2xl p-6 sm:p-8 lg:p-12 text-white relative overflow-hidden group'>
+              <div className='absolute right-0 bottom-0 opacity-10 group-hover:scale-110 transition-all ease-in-out duration-500 pointer-events-none'>
+                <Key className='w-48 h-48 sm:w-64 sm:h-64 translate-x-12 translate-y-12 sm:translate-x-0 sm:translate-y-0' strokeWidth={1} />
               </div>
-              <h3 className='text-2xl sm:text-3xl lg:text-4xl font-bold mb-4'>Emergency 24/7 Lockout</h3>
-              <p className='text-gray-400 text-base sm:text-lg max-w-md mb-8 sm:mb-10 leading-relaxed'>
-                Locked out of your home or vehicle? Our rapid-response team is on standby 24 hours a day to provide non-destructive entry and get you
-                back inside safely.
-              </p>
-              <Link href={`tel:${lead?.phone || ''}`} className='block sm:inline-block'>
-                <button className='cursor-pointer w-full sm:w-auto bg-(--brand-orange) hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-8 rounded-full transition-all ease-in-out duration-500'>
-                  Call For Emergency Help
-                </button>
-              </Link>
+              <div className='relative z-10'>
+                <div className='inline-flex px-3 py-1 bg-white/10 text-white rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 backdrop-blur-md'>
+                  Priority Service
+                </div>
+                <h3 className='text-2xl sm:text-3xl lg:text-4xl font-bold mb-4'>{services[0].title}</h3>
+                <p className='text-gray-400 text-base sm:text-lg max-w-md mb-8 sm:mb-10 leading-relaxed'>{services[0].summary}</p>
+                <Link href={`/${industry}/${slug}/services/${services[0].serviceSlug}`} className='block sm:inline-block'>
+                  <button className='cursor-pointer w-full sm:w-auto bg-(--brand-orange) hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-8 rounded-full transition-all ease-in-out duration-500'>
+                    View {services[0].title}
+                  </button>
+                </Link>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Regular service cards */}
-          {[
-            {
-              id: 'lock-replacement',
-              tag: 'Home Security',
-              title: 'Lock Replacement & Upgrades',
-              desc: 'Anti-snap cylinder locks and deadbolts installed to British Standards.',
-              icon: Wrench,
-            },
-            {
-              id: 'upvc-repairs',
-              tag: 'Specialist',
-              title: 'UPVC Door & Window Locks',
-              desc: 'Repair and replacement of faulty multipoint UPVC locking mechanisms.',
-              icon: Home,
-            },
-            {
-              id: 'commercial-security',
-              tag: 'Business',
-              title: 'Commercial Access Control',
-              desc: 'Master key systems, digital locks, and high-security installations.',
-              icon: Award,
-            },
-            {
-              id: 'key-cutting',
-              tag: 'In-Store/Mobile',
-              title: 'Mobile Key Cutting',
-              desc: 'Precision key duplication on-site for mortice and cylinder keys.',
-              icon: Key,
-            },
-            {
-              id: 'auto-locksmith',
-              tag: 'Vehicle',
-              title: 'Auto Locksmith Services',
-              desc: 'Vehicle entry, transponder key programming, and broken key extraction.',
-              icon: Car,
-            },
-            {
-              id: 'burglary-repairs',
-              tag: 'Emergency',
-              title: 'Burglary Repairs & Boarding',
-              desc: 'Immediate post-break-in securing, boarding up, and lock replacement.',
-              icon: Shield,
-            },
-          ].map((srv, idx) => (
-            <Link
-              key={idx}
-              href={`/${industry}/${slug}/services/${srv.id}`}
-              className='bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 hover:border-(--brand-orange) hover:shadow-xl transition-all ease-in-out duration-500 group flex flex-col justify-between'
-            >
-              <div>
-                <div className='w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-(--brand-orange) mb-6 group-hover:scale-110 transition-all ease-in-out duration-500'>
-                  <srv.icon className='w-6 h-6' />
-                </div>
-                <div className='inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs font-bold mb-3 uppercase tracking-wider'>
-                  {srv.tag}
-                </div>
-                <h3 className='text-xl font-bold text-gray-900 mb-3 group-hover:text-(--brand-orange) transition-colors'>{srv.title}</h3>
-                <p className='text-gray-500 leading-relaxed'>{srv.desc}</p>
-              </div>
-            </Link>
-          ))}
+          {services &&
+            services
+              .slice(1)
+              .slice(0)
+              .map((srv, idx) => (
+                <Link
+                  key={idx}
+                  href={`/${industry}/${slug}/services/${srv.serviceSlug}`}
+                  className='bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 hover:border-(--brand-orange) hover:shadow-xl transition-all ease-in-out duration-500 group flex flex-col justify-between'
+                >
+                  <div>
+                    <div className='w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-(--brand-orange) mb-6 group-hover:scale-110 transition-all ease-in-out duration-500'>
+                      <ShieldCheck className='w-6 h-6' />
+                    </div>
+                    <div className='inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs font-bold mb-3 uppercase tracking-wider'>
+                      Service
+                    </div>
+                    <h3 className='text-xl font-bold text-gray-900 mb-3 group-hover:text-(--brand-orange) transition-colors'>{srv.title}</h3>
+                    <p className='text-gray-500 leading-relaxed'>{srv.summary}</p>
+                  </div>
+                </Link>
+              ))}
         </div>
       </section>
 
@@ -483,25 +445,48 @@ export function ServicesIndex({ lead, services, industry, slug }: TemplateProps)
 
       <Container className='py-24 -mt-26'>
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
-          {services?.map((s) => (
-            <div
-              key={s.serviceSlug}
-              className='bg-white border border-gray-200 p-8 rounded-2xl hover:border-(--brand-orange) hover:shadow-2xl transition-all ease-in-out duration-500 group flex flex-col justify-between'
-            >
-              <div>
-                <div className='w-12 h-12 rounded-xl bg-[#ff6333]/10 flex items-center justify-center mb-6 group-hover:bg-(--brand-orange) transition-all ease-in-out duration-500'>
-                  <ShieldCheck className='w-6 h-6 text-(--brand-orange) group-hover:text-white transition-all ease-in-out duration-500' />
-                </div>
-                <h2 className='text-2xl font-bold mb-4 text-gray-900 group-hover:text-(--brand-orange) transition-colors'>{s.title}</h2>
-                <p className='text-gray-500 leading-relaxed mb-8'>{s.summary}</p>
+          {services && services.length > 0 && (
+            <div className='md:col-span-2 lg:col-span-2 bg-(--dark-bg) rounded-2xl p-6 sm:p-8 lg:p-12 text-white relative overflow-hidden group flex flex-col justify-between'>
+              <div className='absolute right-0 bottom-0 opacity-10 group-hover:scale-110 transition-all ease-in-out duration-500 pointer-events-none'>
+                <Key className='w-48 h-48 sm:w-64 sm:h-64 translate-x-12 translate-y-12 sm:translate-x-0 sm:translate-y-0' strokeWidth={1} />
               </div>
-              <Link href={`/${industry}/${slug}/services/${s.serviceSlug}`}>
-                <button className='w-full cursor-pointer bg-gray-50 hover:bg-black text-gray-900 hover:text-white font-bold py-3 px-6 rounded-xl transition-all ease-in-out duration-500 group-hover:shadow-lg'>
-                  Explore Service
-                </button>
-              </Link>
+              <div className='relative z-10 mb-8'>
+                <div className='inline-flex px-3 py-1 bg-white/10 text-white rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 backdrop-blur-md'>
+                  Priority Service
+                </div>
+                <h3 className='text-2xl sm:text-3xl lg:text-4xl font-bold mb-4'>{services[0].title}</h3>
+                <p className='text-gray-400 text-base sm:text-lg max-w-md mb-8 sm:mb-10 leading-relaxed'>{services[0].summary}</p>
+              </div>
+              <div className='relative z-10'>
+                <Link href={`/${industry}/${slug}/services/${services[0].serviceSlug}`} className='block sm:inline-block'>
+                  <button className='cursor-pointer w-full sm:w-auto bg-(--brand-orange) hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-8 rounded-full transition-all ease-in-out duration-500'>
+                    Explore {services[0].title}
+                  </button>
+                </Link>
+              </div>
             </div>
-          ))}
+          )}
+
+          {services &&
+            services.slice(1).map((s) => (
+              <div
+                key={s.serviceSlug}
+                className='bg-white border border-gray-200 p-8 rounded-2xl hover:border-(--brand-orange) hover:shadow-2xl transition-all ease-in-out duration-500 group flex flex-col justify-between'
+              >
+                <div>
+                  <div className='w-12 h-12 rounded-xl bg-[#ff6333]/10 flex items-center justify-center mb-6 group-hover:bg-(--brand-orange) transition-all ease-in-out duration-500'>
+                    <ShieldCheck className='w-6 h-6 text-(--brand-orange) group-hover:text-white transition-all ease-in-out duration-500' />
+                  </div>
+                  <h2 className='text-2xl font-bold mb-4 text-gray-900 group-hover:text-(--brand-orange) transition-colors'>{s.title}</h2>
+                  <p className='text-gray-500 leading-relaxed mb-8'>{s.summary}</p>
+                </div>
+                <Link href={`/${industry}/${slug}/services/${s.serviceSlug}`}>
+                  <button className='w-full cursor-pointer bg-gray-50 hover:bg-black text-gray-900 hover:text-white font-bold py-3 px-6 rounded-xl transition-all ease-in-out duration-500 group-hover:shadow-lg'>
+                    Explore Service
+                  </button>
+                </Link>
+              </div>
+            ))}
         </div>
       </Container>
 
@@ -585,7 +570,8 @@ export function ServiceDetail({ service, lead, industry, slug }: TemplateProps) 
           </Link>
           <div className='max-w-3xl'>
             <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>
-              {service.title}{lead?.city ? ` in ${lead.city}` : ''}
+              {service.title}
+              {lead?.city ? ` in ${lead.city}` : ''}
             </h1>
             <p className='text-gray-300 mt-4 text-base sm:text-lg md:text-xl border-l-2 border-(--brand-orange) pl-4'>{service.summary}</p>
           </div>
@@ -769,7 +755,9 @@ export function BlogIndex({ lead, posts, industry, slug }: TemplateProps) {
         />
         <div className='absolute inset-0 bg-black/75 z-10' />
         <div className='absolute inset-0 z-30 container mx-auto max-w-7xl flex flex-col justify-end pb-8 sm:pb-12 px-4 md:px-6'>
-          <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>Security Advice & News{lead?.city ? ` in ${lead.city}` : ''}</h1>
+          <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight'>
+            Security Advice & News{lead?.city ? ` in ${lead.city}` : ''}
+          </h1>
           <p className='text-gray-300 mt-4 text-base sm:text-lg md:text-xl max-w-2xl border-l-2 border-(--brand-orange) pl-4'>
             Expert tips, updates, and guides to keep your property safe.
           </p>
