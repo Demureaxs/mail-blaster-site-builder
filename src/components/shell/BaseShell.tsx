@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { LeadConfig } from '@/lib/types';
-import { Phone, ArrowRight, MapPin } from 'lucide-react';
+import { Phone, ArrowRight, MapPin, Home, Wrench, BookOpen } from 'lucide-react';
 
 interface BaseShellProps {
   children: React.ReactNode;
@@ -123,7 +123,7 @@ export function BaseShell({ children, lead, industry, slug }: BaseShellProps) {
       <main className='flex-1 flex flex-col pt-0'>{children}</main>
 
       {/* ── Footer ─────────────────────────────────────────────────── */}
-      <footer className='bg-(--dark-bg) text-white mx-4 mb-4 rounded-3xl overflow-hidden mt-10'>
+      <footer className='bg-(--dark-bg) mb-26 md:mb-6 text-white mx-4 mb-4 rounded-3xl overflow-hidden mt-10'>
         {/* Top CTA */}
         <div className='container mx-auto max-w-7xl px-4 md:px-10 py-20'>
           <div className='grid md:grid-cols-2 gap-16 items-start'>
@@ -218,13 +218,46 @@ export function BaseShell({ children, lead, industry, slug }: BaseShellProps) {
         </div>
       </footer>
 
+      {/* ── Mobile Bottom Navigation ───────────────────────────────── */}
+      <nav className='md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 z-[60] flex items-center justify-around pb-2 pt-2 px-2 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]'>
+        {industry && slug ? (
+          <>
+            <Link
+              href={`/${industry}/${slug}`}
+              className='flex flex-col items-center gap-1 p-2 text-gray-600 hover:text-(--brand-orange) transition-colors'
+            >
+              <Home className='w-5 h-5' />
+              <span className='text-[10px] font-bold tracking-wide uppercase'>Home</span>
+            </Link>
+            <Link
+              href={`/${industry}/${slug}/services`}
+              className='flex flex-col items-center gap-1 p-2 text-gray-600 hover:text-(--brand-orange) transition-colors'
+            >
+              <Wrench className='w-5 h-5' />
+              <span className='text-[10px] font-bold tracking-wide uppercase'>Services</span>
+            </Link>
+            <Link
+              href={`/${industry}/${slug}/blog`}
+              className='flex flex-col items-center gap-1 p-2 text-gray-600 hover:text-(--brand-orange) transition-colors'
+            >
+              <BookOpen className='w-5 h-5' />
+              <span className='text-[10px] font-bold tracking-wide uppercase'>Blog</span>
+            </Link>
+            <Link href={`tel:${lead?.phone || ''}`} className='flex flex-col items-center gap-1 p-2 text-(--brand-orange) transition-colors'>
+              <Phone className='w-5 h-5' />
+              <span className='text-[10px] font-bold tracking-wide uppercase'>Call</span>
+            </Link>
+          </>
+        ) : null}
+      </nav>
+
       {/* ── Fixed WhatsApp Button ──────────────────────────────────── */}
       <a
         href={`https://wa.me/${lead?.phone && lead?.phone.replace(/\s/g, '')}`}
         target='_blank'
         rel='noopener noreferrer'
         aria-label='Chat with us on WhatsApp'
-        className='fixed bottom-10 right-10 z-50 hover:scale-110 transition-transform ease-in-out duration-300 drop-shadow-xl'
+        className='fixed bottom-24 md:bottom-10 right-8 sm:right-4 md:right-10 z-50 hover:scale-110 transition-transform ease-in-out duration-300 drop-shadow-xl'
       >
         <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' className='w-14 h-14' aria-hidden='true'>
           <circle cx='24' cy='24' r='24' fill='#25D166' />
