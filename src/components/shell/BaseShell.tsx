@@ -71,9 +71,9 @@ export function BaseShell({ children, lead, industry, slug }: BaseShellProps) {
                   <path d='M12 2C9.24 2 7 4.24 7 7v4H5v10h14V11h-2V7c0-2.76-2.24-5-5-5zm0 2c1.66 0 3 1.34 3 3v4H9V7c0-1.66 1.34-3 3-3zm-5 9h10v6H7v-6z' />
                 </svg>
               </div>
-              <span className='font-bold tracking-tight text-white lg:text-xl text-nowrap drop-shadow-md'>
+              {/* <span className='font-bold tracking-tight text-white lg:text-xl text-nowrap drop-shadow-md'>
                 {lead?.businessName || 'Your Business'}
-              </span>
+              </span> */}
             </Link>
 
             {/* Navigation */}
