@@ -1,8 +1,8 @@
+
 import { notFound } from 'next/navigation';
 import { getLead } from '@/lib/kv';
 import { getTemplate } from '@/templates/registry';
 import { BaseShell } from '@/components/shell/BaseShell';
-import { logServerEvent } from '@/lib/analytics';
 import { constructMetadata } from '@/lib/metadata';
 
 interface PageProps {
@@ -27,13 +27,6 @@ export default async function Page({ params }: PageProps) {
     notFound();
   }
 
-  // Log view
-  await logServerEvent({
-    event: 'demo_view',
-    industry,
-    slug,
-    path: `/${industry}/${slug}`,
-  });
 
   const Template = getTemplate(industry);
   const { DemoHome } = Template.Components;

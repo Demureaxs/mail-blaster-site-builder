@@ -10,9 +10,12 @@ interface BaseShellProps {
   ctaLink?: string;
 }
 
+import { ViewTracker } from './ViewTracker';
+
 export function BaseShell({ children, lead, industry, slug }: BaseShellProps) {
   return (
     <div className='flex min-h-screen bg-gray-50 flex-col relative'>
+      <ViewTracker industry={industry} slug={slug} />
       {/* ── Purchase Demo Banner ─────────────────────────────────── */}
       <div className='bg-black text-white h-11 flex items-center justify-center px-4 relative z-100 border-b border-gray-800'>
         <div className='flex items-center gap-3 sm:gap-4 text-sm'>
