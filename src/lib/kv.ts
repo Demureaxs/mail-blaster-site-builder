@@ -43,7 +43,11 @@ export async function logEvent(payload: EventPayload): Promise<void> {
           const slug = parts[1];
           const lead = await fetchLeadData(industry, slug);
           if (lead) {
-            leadInfo = `<b>${lead.businessName}</b>\n📍 ${lead.city || "Unknown City"}\n🔗 <a href="${lead.website}">Original Site</a>\n📞 ${lead.phone || "N/A"}`;
+            const cleanPhone = lead.phone ? lead.phone.replace(/[^0-9+]/g, '') : '';
+            const phoneHtml = lead.phone ? `<a href="tel:${cleanPhone}">${lead.phone}</a>` : "N/A";
+            const newSiteUrl = `https://preview.teklytic.com/${industry}/${slug}`;
+            
+            leadInfo = `<b>${lead.businessName}</b>\n📍 ${lead.city || "Unknown City"}\n🔗 <a href="${lead.website}">Original Site</a>\n🚀 <a href="${newSiteUrl}">Preview Site</a>\n📞 ${phoneHtml}`;
           }
         }
       }

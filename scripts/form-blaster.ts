@@ -167,7 +167,8 @@ async function run() {
       }
     }
 
-    if (row[COL_FORM_STATUS] === 'completed_outreach') {
+    // Skip if row already has any status (completed, error, or no_form_found)
+    if (row[COL_FORM_STATUS] && String(row[COL_FORM_STATUS]).trim() !== '') {
       continue;
     }
 
@@ -310,14 +311,25 @@ async function run() {
           
           // Submit Action
           try {
-            const submitBtn = await activeForm.$('button[type="submit"], input[type="submit"], button.submit, .submit-btn');
+            await delay(1000); // Wait for any dynamic reCAPTCHA to init
+            
+            // Look for any valid submit button (button default type is submit inside forms)
+            const submitBtn = await activeForm.$('button[type="submit"], input[type="submit"], button:not([type="button"]), .submit-btn');
+            
             if (submitBtn && await submitBtn.isVisible()) {
               await submitBtn.click({ timeout: 5000, force: true });
             } else {
-              await activeForm.evaluate((form: HTMLFormElement) => form.submit());
+              // If no button found, press Enter on the message field to trigger form submission naturally
+              console.log("-> No visible submit button, pressing Enter...");
+              const msgField = await activeForm.$('textarea, input[name*="message" i], input[name*="comments" i]');
+              if (msgField) {
+                await msgField.press('Enter');
+              } else {
+                await activeForm.evaluate((form: HTMLFormElement) => form.submit());
+              }
             }
           } catch (e) {
-            console.log("-> Click failed, forcing JS submit...");
+            console.log("-> Click/Enter failed, forcing JS submit...");
             await activeForm.evaluate((form: HTMLFormElement) => form.submit());
           }
 
