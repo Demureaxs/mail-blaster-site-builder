@@ -17,7 +17,7 @@ export function BaseShell({ children, lead, industry, slug }: BaseShellProps) {
     <div className='flex min-h-screen bg-gray-50 flex-col relative'>
       <ViewTracker industry={industry} slug={slug} />
       {/* ── Purchase Demo Banner ─────────────────────────────────── */}
-      <div className='bg-black text-white h-11 flex items-center justify-center px-4 relative z-100 border-b border-gray-800'>
+      {/* <div className='bg-black text-white h-11 flex items-center justify-center px-4 relative z-100 border-b border-gray-800'>
         <div className='flex items-center gap-3 sm:gap-4 text-sm'>
           <span className='font-medium hidden md:inline'>This is a live preview of your new website.</span>
           <span className='font-bold text-(--brand-orange)'>Ready to launch?</span>
@@ -27,7 +27,7 @@ export function BaseShell({ children, lead, industry, slug }: BaseShellProps) {
             </button>
           </Link>
         </div>
-      </div>
+      </div> */}
       {/* ── Scrolling Promo Banner ─────────────────────────────────── */}
       <div className='bg-(--dark-bg) text-white py-2.5 overflow-hidden'>
         <div className='flex animate-marquee whitespace-nowrap'>
